@@ -43,6 +43,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 				.antMatchers("/css/**").permitAll()
 				.antMatchers("/distribution/**").permitAll()
 				.antMatchers("/js/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/webjars/**").permitAll()
 				.antMatchers(HttpMethod.GET, "home").permitAll()
 				.antMatchers(HttpMethod.GET, "/").permitAll()
 				.antMatchers(HttpMethod.GET, "/cadastrar").permitAll()
