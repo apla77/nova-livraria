@@ -48,7 +48,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/").permitAll()
 				.antMatchers(HttpMethod.GET, "/cadastrar").permitAll()
 				.anyRequest().authenticated()
-				.and().formLogin().permitAll()
+				.and().formLogin().loginPage("login").permitAll()
 				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 		
 		http.csrf().disable();
