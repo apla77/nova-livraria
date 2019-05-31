@@ -29,7 +29,7 @@
 			<nav sec:authorize="hasAuthority('ADMINISTRADOR')" th:replace="fragments/sidebar :: nav-sidebar">
 				<span>menu</span>
 			</nav>
-			<nav sec:authorize="hasAuthority('CLIENTE')" th:replace="fragments/sidebar :: nav-sidebar-2">
+			<nav sec:authorize="hasAuthority('Cliente')" th:replace="fragments/sidebar :: nav-sidebar-2">
 				<span>menu</span>
 			</nav>
 		</aside>

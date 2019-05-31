@@ -1,7 +1,10 @@
 package br.edu.ifrn.livraria.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.ifrn.livraria.model.Role;
 import br.edu.ifrn.livraria.model.Usuario;
+import br.edu.ifrn.livraria.service.CidadeService;
 import br.edu.ifrn.livraria.service.RoleService;
 import br.edu.ifrn.livraria.service.UsuarioService;
 
