@@ -19,19 +19,16 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 	private RoleService serviceRole;
 	@Autowired
 	private UsuarioService serviceUsuario;
-	//@Autowired
-	//private PasswordEncoder passwordEncoder; 
 	
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		System.out.println("----- Criando Usuário ------");
 		creatUsuarioAdmin();
-		//createUsuario();
-		//System.out.println("----- Usuário Criado com Sucesso! -----");
+		createUsuario();
+		System.out.println("----- Usuário Criado com Sucesso! -----");
 	}
 	
 	private void creatUsuarioAdmin() {
-	
 		Usuario usuario = new Usuario();
 		usuario.setEmail("apla77@gmail.com");
 		usuario.setSenha("123456");
@@ -48,23 +45,22 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 			serviceUsuario.add(usuario);
 		}
 	}
-	/*
+	
 	private void createUsuario() {
 		Usuario usuario2 = new Usuario();
 		usuario2.setEmail("maria@gmail.com");
-		usuario2.setSenha("abcdef");
-		//usuario2.setSenha(new BCryptPasswordEncoder().encode(usuario2.getPassword()));
+		usuario2.setSenha("123456");
 		usuario2.setBairro("Centro");
 		usuario2.setRua("13 de Maio");
 		usuario2.setMunicipio("Itapipoca");
 		usuario2.setNome("Maria de Fátima");
 		Role role = serviceRole.getNome("Cliente");
+		if(role == null) {
 			role = new Role();
 			role.setNome("Cliente");
 			serviceRole.add(role);
 			usuario2.getRole().add(role);
-
-		serviceUsuario.add(usuario2);
+			serviceUsuario.add(usuario2);
+		}
 	}
-	*/
 }
