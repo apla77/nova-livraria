@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
 	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"> 
 <head>
 	<title>Livraria Spring-Boot</title>
@@ -25,7 +26,10 @@
 	
 	<div  class="layout-main">
 		<aside>
-			<nav th:replace="fragments/sidebar :: nav-sidebar">
+			<nav sec:authorize="hasAuthority('ADMINISTRADOR')" th:replace="fragments/sidebar :: nav-sidebar">
+				<span>menu</span>
+			</nav>
+			<nav sec:authorize="hasAuthority('CLIENTE')" th:replace="fragments/sidebar :: nav-sidebar-2">
 				<span>menu</span>
 			</nav>
 		</aside>
