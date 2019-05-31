@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class HomeController {
 
 	@PostMapping("/home")
-
-	@GetMapping("/home")
 	public String login() {
 		return "home";
 	} 
