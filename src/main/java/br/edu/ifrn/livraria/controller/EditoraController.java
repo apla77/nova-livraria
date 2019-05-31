@@ -34,7 +34,6 @@ public class EditoraController {
 		return cadastrar(editora);
 	}
 	
-
 	@GetMapping("/excluir/{id}")
 	private ModelAndView excluir( @PathVariable("id") Long id) {
 		editoraService.delete(id);
