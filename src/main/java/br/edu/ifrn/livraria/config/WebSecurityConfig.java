@@ -45,10 +45,10 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 				.antMatchers("/js/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/webjars/**").permitAll()
 				.antMatchers(HttpMethod.POST, "/home").hasAnyAuthority("Cliente")
-				.antMatchers(HttpMethod.GET, "/home").permitAll()
+				.antMatchers(HttpMethod.GET, "/").permitAll()
 				.antMatchers(HttpMethod.GET, "/cadastrar").permitAll()
 				.anyRequest().authenticated()
-				.and().formLogin().loginPage("/home").permitAll()
+				.and().formLogin().loginPage("home").permitAll()
 				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 		
 		http.csrf().disable();
