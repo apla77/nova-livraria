@@ -33,7 +33,7 @@ public class EditoraController {
 		Editora editora = editoraService.findOne(id);
 		return cadastrar(editora);
 	}
-	
+
 	@GetMapping("/excluir/{id}")
 	private ModelAndView excluir( @PathVariable("id") Long id) {
 		editoraService.delete(id);
@@ -59,5 +59,4 @@ public class EditoraController {
         mv.addObject("editora", editoraService.listaAll());
         return mv;
 	}
-
 }
