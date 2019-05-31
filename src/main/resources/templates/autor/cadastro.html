@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head><meta charset="UTF-8"/></head> 
+<body> 
+	    <section class="layout-content" layout:fragment="corpo">
+	       <div class="page-header">
+	        <nav class="navbar navbar-expand-md bg-light">
+	            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+	                <ul class="navbar-nav mr-auto">
+	                    <li class="nav-item active">
+	                        <i class="oi oi-caret-right"></i>
+	                        <span>Cadastrar Autores</span>
+	                    </li>
+	                </ul>
+	                <a class="btn btn-primary btn-md" href="/autor/lista" role="button">
+	                    <span class="oi oi-spreadsheet" title="Listar" aria-hidden="true"></span>
+	                    <span>Listar Autores</span>
+	                </a>
+	            </div>
+	        </nav>
+	        </div>
+	
+	        <div class="container" id="cadastro">
+	        
+	        	<div th:replace="fragments/alert"></div>
+	        	
+				<form th:action="${autor.id == null} ? @{/autor/salvar} : @{/autor/editar}" 
+				      th:object="${autor}" method="POST">
+				    <div class="form-row">
+				        <div class="form-group col-md-7">
+				            <label for="nome">Autor</label>
+				            <input type="text" class="form-control" id="nome"
+				                   placeholder="Nome Autor" autofocus="autofocus" th:field="*{nome}" required/>
+				        </div>
+				        <div class="form-group col-md-7">
+				            <label for="email">E-Mail</label>
+				 			<input type="email" class="form-control" id="email"
+				                   placeholder="E-Mail Autor" autofocus="autofocus" th:field="*{email}" required/>
+				        </div>
+				        <div class="form-group col-md-7"> 
+				            <label for="cpf">CPF</label>
+				 			<input type="text" class="form-control" id="cpf"
+				                   placeholder="CPF Autor" autofocus="autofocus" th:field="*{cpf}" required/>
+				        </div>
+				        
+				    </div>
+				    <input type="hidden" id="id" th:field="*{id}"/>
+				    <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+				</form>
+	        </div>
+	    </section>
+</body>
+</html>
