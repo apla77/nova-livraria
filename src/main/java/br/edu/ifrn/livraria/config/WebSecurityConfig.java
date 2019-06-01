@@ -24,7 +24,6 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
-				.antMatchers("/fragmentos/**").permitAll()
 				.antMatchers("/autor/**").hasAnyAuthority("ADMINISTRADOR")
 				.antMatchers("/categoria/**").hasAnyAuthority("ADMINISTRADOR")
 				.antMatchers("/editora/**").hasAnyAuthority("ADMINISTRADOR")
@@ -35,20 +34,22 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 				.antMatchers("http://**").hasAnyAuthority("ADMINISTRADOR", "Cliente")
 				.antMatchers("https://**").hasAnyAuthority("ADMINISTRADOR", "Cliente")
 				.antMatchers("/usuario/**").hasAnyAuthority("ADMINISTRADOR")
+				.antMatchers("/fragments/**").permitAll()
 				.antMatchers("layout").permitAll()
 				.antMatchers("/image/**").permitAll()
 				.antMatchers("/static/**").permitAll()
 				.antMatchers("/resources/**").permitAll()
 				.antMatchers("/vendor/**").permitAll()
-				.antMatchers("/css/**").permitAll()
+				.antMatchers("/css/**").permitAll() 
 				.antMatchers("/distribution/**").permitAll()
 				.antMatchers("/js/**").permitAll()
-				.antMatchers(HttpMethod.GET, "/webjars/**").permitAll()
-				.antMatchers(HttpMethod.POST, "/home").hasAnyAuthority("Cliente")
-				.antMatchers(HttpMethod.GET, "/").permitAll()
-				.antMatchers(HttpMethod.GET, "/cadastrar").permitAll()
+				//.antMatchers(HttpMethod.GET, "/webjars/**").permitAll()
+				//.antMatchers(HttpMethod.POST, "/home").hasAnyAuthority("Cliente")
+				//.antMatchers(HttpMethod.GET, "/").permitAll()
+				//.antMatchers(HttpMethod.GET, "/cadastrar").permitAll()
 				.anyRequest().authenticated()
-				.and().formLogin().loginPage("/home").permitAll()
+				.and().formLogin().permitAll()
+				//.and().formLogin().loginPage("/home").permitAll()
 				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 		
 		http.csrf().disable();
@@ -68,7 +69,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**",  "/distribuition/**",  "/img/**",  "/js/**",  "/scss/**", "/h2/**");
+		web.ignoring().antMatchers("/resources/**", "/static/**", "/fragments/**", "/css/**",  "/distribuition/**",  "/img/**",  "/js/**",  "/scss/**", "/h2/**");
 		web.ignoring().antMatchers("/layout", "http::/**", "https::/**", "/http::/**", "/https::/**");
 }
 }
