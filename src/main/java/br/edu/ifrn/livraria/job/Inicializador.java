@@ -54,10 +54,10 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 		usuario2.setRua("13 de Maio");
 		usuario2.setMunicipio("Itapipoca");
 		usuario2.setNome("Maria de Fátima");
-		Role role = serviceRole.getNome("Cliente");
+		Role role = serviceRole.getNome("CLIENTE");
 		if(role == null) {
 			role = new Role();
-			role.setNome("Cliente");
+			role.setNome("CLIENTE");
 			serviceRole.add(role);
 			usuario2.getRole().add(role);
 			serviceUsuario.add(usuario2);

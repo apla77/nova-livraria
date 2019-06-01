@@ -57,19 +57,19 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 	
 	}
 	
-	 @Autowired
+	@Autowired
 	  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		  auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
 	  }
 	 
 	@Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+  public PasswordEncoder passwordEncoder() {
+      return new BCryptPasswordEncoder();
+  }
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/resources/**", "/static/**", "/fragments/**", "/css/**",  "/distribuition/**",  "/img/**",  "/js/**",  "/scss/**", "/h2/**");
+		web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**",  "/distribuition/**",  "/img/**",  "/js/**",  "/scss/**", "/h2/**");
 		web.ignoring().antMatchers("/layout", "http::/**", "https::/**", "/http::/**", "/https::/**");
 }
 }
