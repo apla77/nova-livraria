@@ -8,11 +8,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class HomeController {
 
 	@PostMapping("/home") 
-	public String login() { 
+	public String home() { 
+		System.out.println("TELA HOME");
 		return "home";
 	} 
+	 
 	@GetMapping("/")
-	public String home() {
-		return "/login";
+	public String index() {
+		System.out.println("TELA LOGIN");
+		return "login";
+	}
+	
+	@GetMapping("/entrar")
+	public String entrar() {
+		return "login";
 	}
 }
