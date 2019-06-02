@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.ifrn.livraria.model.Role;
 import br.edu.ifrn.livraria.model.Usuario;
-import br.edu.ifrn.livraria.service.CidadeService;
 import br.edu.ifrn.livraria.service.RoleService;
 import br.edu.ifrn.livraria.service.UsuarioService;
 
@@ -30,51 +29,25 @@ public class UsuarioController {
 	
 	@GetMapping("/cadastrar") 
 	public ModelAndView cadastrar(Usuario usuario) {
-		ModelAndView mv = new ModelAndView("usuario/cadastro");
-		mv.addObject("usuario", usuario);
+		
+		ModelAndView mv = new ModelAndView("/usuario/cadastro");
+		mv.addObject("usuario", usuario); 
+		mv.addObject("roles", serviceRole.buscarTodos());
 		return mv;
 	} 
 	
 	@PostMapping("/salvar")
-	public ModelAndView salvar(Usuario usuario) {
+	public ModelAndView salvar(@Valid Usuario usuario, BindingResult result) {
 		
-		Role role = serviceRole.getNome("CLIENTE");
-		if(role == null) {
-			role = new Role();
-			role.setNome("CLIENTE");
-			serviceRole.add(role);
-		}
-		Usuario usuario2 = service.getEmail(usuario.getEmail());
-		ModelAndView view = new ModelAndView("login");
-		if(usuario2 != null) {
-			if(!usuario.getEmail().equals(usuario2.getEmail())) {
-				System.out.println("OK");
-				service.add(usuario);
-				view.addObject("mensagem", "Usuário cadastrado com sucesso!");
-			}else {
-				System.out.println("ERRO");
-				view.addObject("error", "Email já está cadastrado no sistema!");
-			}
-		}else {
-			usuario.getRole().add(role);
-			service.add(usuario);
-			view.addObject("mensagem", "Usuário cadastrado com sucesso!");
-		}
-		return view;
-		
-		/*
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			return cadastrar(usuario);
 		}
-		
-		service.save(usuario);
-		//ModelAndView rec = findAll();
-		//rec.addObject("mensagem", "Usuario salvo com sucesso!");
-		//return rec;
-		return findAll();
-		*/
+
+		service.add(usuario);
+		ModelAndView rec = findAll();
+		return rec;
 	}
-	
+	 
 	
 	@GetMapping("/lista")
 	public ModelAndView findAll() {

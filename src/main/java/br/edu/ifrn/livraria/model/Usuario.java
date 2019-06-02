@@ -30,7 +30,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 public class Usuario implements UserDetails {
 
-	//private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; // estava comentada
 	
 	public Usuario() {
 		this.dataCriacao = Calendar.getInstance().getTime();
@@ -40,7 +40,6 @@ public class Usuario implements UserDetails {
 		this.credentialsNonExpired = true;
 	}
 	
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -70,7 +69,7 @@ public class Usuario implements UserDetails {
 	
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
-	private Set<Role> role = new HashSet<Role>();
+	private Set<Role> role; //  = new HashSet<Role>();
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCriacao;

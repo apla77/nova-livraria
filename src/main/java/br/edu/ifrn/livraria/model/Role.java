@@ -9,8 +9,6 @@ import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 public class Role implements GrantedAuthority{
-	
-	//private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
@@ -38,5 +36,5 @@ public class Role implements GrantedAuthority{
 
 	public void setNome(String nome) {
 		this.nome = nome;
-}
+	}
 }
