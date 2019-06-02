@@ -30,7 +30,7 @@ public class UsuarioController {
 	@GetMapping("/cadastrar") 
 	public ModelAndView cadastrar(Usuario usuario) {
 		
-		ModelAndView mv = new ModelAndView("/usuario/cadastro");
+		ModelAndView mv = new ModelAndView("usuario/cadastro");
 		mv.addObject("usuario", usuario); 
 		mv.addObject("roles", serviceRole.buscarTodos());
 		return mv;
