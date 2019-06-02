@@ -38,10 +38,10 @@ public class UsuarioController {
 	@PostMapping("/salvar")
 	public ModelAndView salvar(Usuario usuario) {
 		
-		Role role = serviceRole.getNome("Cliente");
+		Role role = serviceRole.getNome("CLIENTE");
 		if(role == null) {
 			role = new Role();
-			role.setNome("Cliente");
+			role.setNome("CLIENTE");
 			serviceRole.add(role);
 		}
 		Usuario usuario2 = service.getEmail(usuario.getEmail());
@@ -60,7 +60,7 @@ public class UsuarioController {
 			service.add(usuario);
 			view.addObject("mensagem", "Usuário cadastrado com sucesso!");
 		}
-return view;
+		return view;
 		
 		/*
 		if(result.hasErrors()) {

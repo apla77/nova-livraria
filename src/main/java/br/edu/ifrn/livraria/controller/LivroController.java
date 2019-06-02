@@ -61,7 +61,7 @@ public class LivroController {
 	public ModelAndView findAll() {
 		
 		ModelAndView mv = new ModelAndView("livro/lista");
-		mv.addObject("livros", service.listaAll());
+		mv.addObject("livro", service.listaAll());
 		
 		return mv;
 	}
@@ -72,6 +72,7 @@ public class LivroController {
 		return cadastrar(service.findOne(id));
 	}
 	
+	/*
 	@GetMapping("/details/{id}")
 	public ModelAndView details(@PathVariable("id") Long id) {
 		
@@ -80,6 +81,7 @@ public class LivroController {
 		
 		return mv;
 	}
+	*/
 	
 	@GetMapping("/excluir/{id}")
 	public ModelAndView excluir(@PathVariable("id") Long id) {
