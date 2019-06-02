@@ -36,7 +36,7 @@ public class LivroController {
 	@GetMapping("/cadastrar")
 	public ModelAndView cadastrar(Livro livro) {
 		
-		ModelAndView mv = new ModelAndView("/livro/cadastro");
+		ModelAndView mv = new ModelAndView("livro/cadastro");
 		mv.addObject("autores", autorService.listaAll());
 		mv.addObject("categorias", categoriaService.listaAll());
 		mv.addObject("editoras", editoraService.listaAll());

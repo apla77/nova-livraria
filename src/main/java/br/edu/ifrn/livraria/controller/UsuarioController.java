@@ -30,7 +30,7 @@ public class UsuarioController {
 	
 	@GetMapping("/cadastrar") 
 	public ModelAndView cadastrar(Usuario usuario) {
-		ModelAndView mv = new ModelAndView("/usuario/cadastro");
+		ModelAndView mv = new ModelAndView("usuario/cadastro");
 		mv.addObject("usuario", usuario);
 		return mv;
 	} 
@@ -79,7 +79,7 @@ public class UsuarioController {
 	@GetMapping("/lista")
 	public ModelAndView findAll() {
 		
-		ModelAndView mv = new ModelAndView("usuario/lista");
+		ModelAndView mv = new ModelAndView("usuario/lista"); 
 		mv.addObject("usuarios", service.findAll());
 		
 		return mv;
