@@ -69,7 +69,7 @@ public class Usuario implements UserDetails {
 	
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
-	private Set<Role> role; //  = new HashSet<Role>();
+	private Set<Role> role = new HashSet<Role>();
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCriacao;
