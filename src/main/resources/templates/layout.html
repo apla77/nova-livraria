@@ -23,13 +23,16 @@
 	<header th:replace="fragments/header :: cabecalho">
 		<div>header</div>
 	</header>
-	
+	 
 	<div  class="layout-main">
 		<aside>
 			<nav sec:authorize="hasAuthority('ADMINISTRADOR')" th:replace="fragments/sidebar :: nav-sidebar">
 				<span>menu</span>
 			</nav>
 			<nav sec:authorize="hasAuthority('CLIENTE')" th:replace="fragments/sidebar2 :: nav-sidebar-2">
+				<span>menu</span>
+			</nav>
+			<nav th:replace="fragments/sidebar3 :: nav-sidebar-3">
 				<span>menu</span>
 			</nav>
 		</aside>

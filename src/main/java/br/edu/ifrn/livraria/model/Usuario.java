@@ -29,7 +29,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 public class Usuario implements UserDetails {
-
+ 
 	private static final long serialVersionUID = 1L; // estava comentada
 	
 	public Usuario() {
@@ -48,7 +48,7 @@ public class Usuario implements UserDetails {
 	@NotBlank(message = "Nome é uma informação obrigatória.")
 	private String nome;
 	
-	@Column(nullable = false, length = 60)
+	@Column(nullable = false, unique = true, length = 60)
 	@NotBlank(message = "Email é uma informação obrigatória.")
 	private String email;
 	

@@ -64,8 +64,8 @@ public class UsuarioController {
 		return cadastrar(service.getOne(id));
 	}
 	
-	@GetMapping("/delete/{id}")
-	public ModelAndView delete(@PathVariable("id") Long id) {
+	@GetMapping("/excluir/{id}")
+	public ModelAndView excluir(@PathVariable("id") Long id) {
 		
 		service.delete(id);
 		
