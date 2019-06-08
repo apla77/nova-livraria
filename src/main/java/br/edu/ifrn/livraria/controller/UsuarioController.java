@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.edu.ifrn.livraria.model.Role;
 import br.edu.ifrn.livraria.model.Usuario;
 import br.edu.ifrn.livraria.service.RoleService;
 import br.edu.ifrn.livraria.service.UsuarioService;

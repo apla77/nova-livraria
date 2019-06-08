@@ -76,5 +76,6 @@ public class UsuarioService implements UserDetailsService{
 	
 	public Usuario findByEmailAndSenha(String email, String senha) {
 		return repository.findByEmailAndSenha(email, senha);
-}
+	}
+	
 }

@@ -21,7 +21,7 @@ public class EmailController {
 	
 	@PostMapping("/sendEmail")
 	public ModelAndView enviarEmail(Email email) {
-		emailServicee.sendEmailText(email, email.getTexto());
+	//	emailServicee.sendEmailText(email, email.getTexto());
 		return success();
 	}
 	
@@ -29,6 +29,6 @@ public class EmailController {
 		ModelAndView view = new ModelAndView("/usuario/portal-user");
 		view.addObject("success", "Email Enviado com Sucesso!");
 		return view;
-}
+	}
 
 }

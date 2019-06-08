@@ -20,5 +20,4 @@ public List<Usuario> findByNomeLike(String name);
 	@Query
 	public Usuario findByNome(String nome);
 
-
 }
