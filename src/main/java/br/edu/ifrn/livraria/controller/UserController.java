@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.ifrn.livraria.model.Email;
@@ -69,11 +70,10 @@ public class UserController {
 	}
 	
 	@GetMapping("/atualizar") 
-	public ModelAndView atualizar(Usuario usuario) {
+	public ModelAndView atualizar(@RequestParam("email") String email) {
 		ModelAndView mv = new ModelAndView("user/trocar_senha");
-		mv.addObject("usuario", usuario);
 		return mv;
-	} 
+	}  
 	
 	@PostMapping("/update")
 	public ModelAndView update(Usuario usuario) {

@@ -18,20 +18,16 @@
 		</div>
 		<div class="container" id="cadastro">
 			<div th:replace="fragments/alert"></div>
-			<form
-				th:action="${usuario.id == null} ? @{/user/salvar} : @{/user/atualizar}"
-				th:object="${usuario}" method="POST">
+			<form th:action="@{/user/atualizar}" method="POST">
 				<div class="form-row">
 
 					<div class="form-group col-md-6">
 						<label for="email">Informe seu E-Mail</label> <input type="email"
-							class="form-control" id="email" placeholder="E-Mail"
+							class="form-control" id="email" name="email" placeholder="E-Mail"
 							autofocus="autofocus" th:field="*{email}" required />
 						<div class="invalid-feedback"></div>
 					</div>
 				</div>
-				
-				<input type="hidden" id="id" th:field="*{id}" />
 				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 			</form>
 		</div>
