@@ -1,5 +1,7 @@
 package br.edu.ifrn.livraria.controller;
 
+import java.util.Random;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,43 +58,39 @@ public class UserController {
 			
 				view.addObject("error", "Email já está cadastrado no sistema!");
 		}else {
-			System.out.println("Metodo sauvar email ************************");
 			service.add(usuario);
 			Email email = new Email();
 			email.setTo(usuario.getEmail());
 			sendEmail.sendEmailBemVindo(email);
-			System.out.println("Saindo do Metodo sauvar email ************************");
 			usuario.getRole().add(role);
-			service.add(usuario);
 			view.addObject("mensagem", "Usuário cadastrado com sucesso!");
 		}
 		return view;		
 	}
-	
+	 
 	@GetMapping("/atualizar") 
-	public ModelAndView atualizar(@RequestParam("email") String email) {
+	public ModelAndView atualizar() {
 		ModelAndView mv = new ModelAndView("user/trocar_senha");
 		return mv;
 	}  
 	
 	@PostMapping("/update")
-	public ModelAndView update(Usuario usuario) {
+	public ModelAndView update(@RequestParam("email") String email) {
 		
-		Usuario usuario2 = service.getEmail(usuario.getEmail());
+		Usuario usuario2 = service.getEmail(email);
 		ModelAndView view = new ModelAndView("login");
 		if(usuario2 == null) {
 			
 				view.addObject("error", "Email não está cadastrado no sistema!");
 		}else {
-			System.out.println("Metodo sauvar email ****//////////////////******");
-			usuario2.setSenha("pipoca123");
-			service.add(usuario);
-			Email email = new Email();
-			email.setTo(usuario.getEmail());
-			sendEmail.sendEmailBemVindo(email);
-			System.out.println("Saindo do Metodo sauvar email *****///////////////////////*****");
-			service.add(usuario);
-			view.addObject("mensagem", "Sua nova senha: pipoca123");
+			Random r = new Random();
+			String novaSenhaGerada = Integer.toString(Math.abs(r.nextInt()), 36).substring(0, 6);
+			usuario2.setSenha(novaSenhaGerada);
+			service.add(usuario2);
+			Email email2 = new Email();
+			email2.setTo(usuario2.getEmail());
+			sendEmail.sendNovaSenhaEmail(email2, novaSenhaGerada);
+			view.addObject("mensagem", "Sua nova senha");
 		}
 		return view;		
 	}

@@ -19,7 +19,6 @@ public class EmailService {
 		
 	public void sendEmailBemVindo(Email email) {
 		try {
-			System.out.println("entro no senEmail");
 			Usuario usuario = serviceUsuario.getEmail(email.getTo());
 			email.setFrom("gestaoescolaronline1.0@gmail.com");
 			email.getMap().put("name", usuario.getNome());
@@ -32,7 +31,26 @@ public class EmailService {
 			message.setFrom(email.getFrom());
 			
 			emailSender.send(message);
-			System.out.println("saiu no senEmail");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void sendNovaSenhaEmail(Email email, String novaSenha) {
+		try {
+			Usuario usuario = serviceUsuario.getEmail(email.getTo());
+			email.setFrom("gestaoescolaronline1.0@gmail.com");
+			email.getMap().put("name", usuario.getNome());
+			email.setSubject("Confira sua nova senha da Livraria!");
+			
+			SimpleMailMessage message = new SimpleMailMessage();
+			message.setTo(email.getTo());
+			message.setSubject(email.getSubject());
+			message.setText("Nova senha: " + novaSenha);
+			message.setFrom(email.getFrom());
+			
+			emailSender.send(message);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -18,13 +18,13 @@
 		</div>
 		<div class="container" id="cadastro">
 			<div th:replace="fragments/alert"></div>
-			<form th:action="@{/user/atualizar}" method="POST">
+			<form th:action="@{/user/update}" method="POST">
 				<div class="form-row">
 
 					<div class="form-group col-md-6">
 						<label for="email">Informe seu E-Mail</label> <input type="email"
 							class="form-control" id="email" name="email" placeholder="E-Mail"
-							autofocus="autofocus" th:field="*{email}" required />
+							autofocus="autofocus" required />
 						<div class="invalid-feedback"></div>
 					</div>
 				</div>
