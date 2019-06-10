@@ -46,23 +46,28 @@ public class UserController {
 	@PostMapping("/salvar")
 	public ModelAndView salvar(Usuario usuario) {
 		
+		/*
 		Role role = serviceRole.getNome("CLIENTE");
 		if(role == null) {
 			role = new Role();
 			role.setNome("CLIENTE");
 			serviceRole.add(role);
 		}
+		*/
 		Usuario usuario2 = service.getEmail(usuario.getEmail());
 		ModelAndView view = new ModelAndView("login");
 		if(usuario2 != null) {
 			
 				view.addObject("error", "Email já está cadastrado no sistema!");
 		}else {
+			Role role = new Role();
+			role.setNome("CLIENTE");
+			serviceRole.add(role);
+			usuario.getRole().add(role);
 			service.add(usuario);
 			Email email = new Email();
 			email.setTo(usuario.getEmail());
 			sendEmail.sendEmailBemVindo(email);
-			usuario.getRole().add(role);
 			view.addObject("mensagem", "Usuário cadastrado com sucesso!");
 		}
 		return view;		
@@ -85,6 +90,7 @@ public class UserController {
 		}else {
 			Random r = new Random();
 			String novaSenhaGerada = Integer.toString(Math.abs(r.nextInt()), 36).substring(0, 6);
+			System.out.println(novaSenhaGerada);
 			usuario2.setSenha(novaSenhaGerada);
 			service.add(usuario2);
 			Email email2 = new Email();

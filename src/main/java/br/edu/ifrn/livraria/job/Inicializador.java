@@ -23,11 +23,11 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		System.out.println("----- Criando Usuário ------");
-		creatUsuarioAdmin();
-		createUsuario();
+	//	creatUsuarioAdmin();
+	//	createUsuario();
 		System.out.println("----- Usuário Criado com Sucesso! -----");
 	}
-	
+	/*
 	private void creatUsuarioAdmin() {
 		Usuario usuario = new Usuario();
 		usuario.setEmail("apla77@gmail.com");
@@ -36,6 +36,7 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 		usuario.setRua("7 de Maio");
 		usuario.setMunicipio("Encanto");
 		usuario.setNome("Mauricio");
+		usuario.setSobrenome("F. Fernandes");
 		Role role = serviceRole.getNome("ADMINISTRADOR");
 		if(role == null) {
 			role = new Role();
@@ -54,6 +55,7 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 		usuario2.setRua("13 de Maio");
 		usuario2.setMunicipio("Itapipoca");
 		usuario2.setNome("Maria de Fátima");
+		usuario2.setSobrenome("Ferreira Fernandes");
 		Role role = serviceRole.getNome("CLIENTE");
 		if(role == null) {
 			role = new Role();
@@ -63,4 +65,5 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 			serviceUsuario.add(usuario2);
 		}
 	}
+	*/
 }

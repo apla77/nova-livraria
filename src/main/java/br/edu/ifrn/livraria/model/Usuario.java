@@ -1,6 +1,5 @@
 package br.edu.ifrn.livraria.model;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
@@ -44,9 +43,14 @@ public class Usuario implements UserDetails {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	@Column(nullable = false, length = 60)
+	@Column(nullable = false, length = 40)
 	@NotBlank(message = "Nome é uma informação obrigatória.")
 	private String nome;
+	
+	@Column(nullable = false, length = 60)
+	@NotBlank(message = "Sobrenome é uma informação obrigatória.")
+	private String sobrenome;
+	
 	
 	@Column(nullable = false, unique = true, length = 60)
 	@NotBlank(message = "Email é uma informação obrigatória.")
@@ -118,6 +122,14 @@ public class Usuario implements UserDetails {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public String getSobrenome() {
+		return sobrenome;
+	}
+
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
 	}
 
 	public String getEmail() {
