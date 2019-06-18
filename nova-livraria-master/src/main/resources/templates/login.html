@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Spring-Boot Básico</title>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+
+<!-- Custom styles for this template -->
+<link type="text/css" th:href="@{/css/style.css}" rel="stylesheet" />
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link type="text/css"
+	th:href="@{/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css}"
+	rel="stylesheet" />
+
+</head>
+<body>
+
+	<div class="container py-5">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="text-center text-white mb-4">Entrar</h2>
+				<div class="row">
+					<div class="col-md-6 mx-auto">
+
+						<!-- form card login -->
+						<div class="card rounded-0">
+							<div class="card-header">
+								<h3 class="mb-0">Entrar</h3>
+							</div>
+							<div class="card-body">
+
+								<div th:if="${param.error}">
+									<div class="alert alert-danger">Usuário e/ou inválidos!</div>
+								</div>
+
+								<form  action="/entrar" method="post">
+									<div class="form-group">
+										<input name="username" class="form-control"
+											placeholder="Usuário" />
+									</div>
+
+									<div class="form-group">
+										<input type="password" name="password" class="form-control"
+											placeholder="Senha" />
+									</div> 
+
+									<div class="form-group">
+										<button class="btn btn-primary btn-block">Entrar</button>
+									</div>
+
+									<div class="form-group">
+										<input type="checkbox" id="remember-me" name="remember-me" />
+										<label for="remember-me">Lembrar?</label>
+									</div>	
+									<a class="nav-item"><a class="nav-link " href="/user/cadastrar"> 
+									<i class="oi oi-person"></i> <span>Inscreva-se</span></a>
+										
+								</form>
+							</div>
+							<!--/card-block-->
+						</div>
+						<!-- /form card login -->
+
+					</div>
+
+
+				</div>
+				<!--/row-->
+
+			</div>
+			<!--/col-->
+		</div>
+		<!--/row-->
+	</div>
+	<!--/container-->
+
+
+</body>
+</html>
