@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+<title>Detalhes do Frete</title>
+
+</head>
+<body>
+		<div class="content-wrapper" layout:fragment="corpo">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Detalhes do Frete</strong>
+				</div>
+				
+				<div class="form-group row">
+					<div>
+							<hr class="sidebar-divider my-1">
+							<div class="row">
+							
+							<div class="form-group col-md-6">
+								
+								<label>Cep Destino:</label> <div th:text="${frete.cep}" ></div>
+								<hr class="sidebar-divider my-0">
+								<label>Estado:</label> <div th:text="${frete.uf}" ></div>	
+								<hr class="sidebar-divider my-0">	
+								<label>Cidade:</label> <div th:text="${frete.cidade}" ></div>
+								<hr class="sidebar-divider my-0">
+								<label>Bairro:</label> <div th:text="${frete.bairro}" ></div>	
+								<hr class="sidebar-divider my-0">
+								<label>Rua:</label> <div th:text="${frete.rua}" ></div>								
+				
+							</div>
+								<div class="form-group col-md-6">
+								<label>Peso:</label> <div th:text="${frete.peso}" ></div>	
+								<hr class="sidebar-divider my-0">	
+								<label>Preço:</label> <div th:text="${frete.valor}" ></div>
+								<hr class="sidebar-divider my-0">
+								<label>Data Entrega Correios:</label> <div th:text="${frete.dataEntregaCorreios}" ></div>	
+								<hr class="sidebar-divider my-0">
+								<label>Data entrega Cliente:</label> <div th:text="${frete.dataEntregaCliente}" ></div>	
+							</div>
+							</div>
+							<hr class="sidebar-divider my-0">
+					</div>
+				</div>
+				<div class="form-group row">
+					<a class="btn btn-sm btn-info" th:href="@{/itemPedido/cadastrar}" >Voltar</a>
+				</div>
+		</div>
+		</div>
+</body>
+</html>

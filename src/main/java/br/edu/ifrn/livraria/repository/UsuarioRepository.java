@@ -19,5 +19,7 @@ public List<Usuario> findByNomeLike(String name);
 	public Usuario findByEmailAndSenha(String email, String senha);
 	@Query
 	public Usuario findByNome(String nome);
+	@Query
+	Usuario findByUsername(String username);
 
 }

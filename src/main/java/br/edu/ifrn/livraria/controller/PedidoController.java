@@ -1,11 +1,14 @@
 package br.edu.ifrn.livraria.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,27 +18,93 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.edu.ifrn.livraria.model.Frete;
+import br.edu.ifrn.livraria.model.ItemPedido;
 import br.edu.ifrn.livraria.model.Livro;
 import br.edu.ifrn.livraria.model.Pedido;
+import br.edu.ifrn.livraria.model.StatusPedido;
+import br.edu.ifrn.livraria.model.Usuario;
+import br.edu.ifrn.livraria.service.EmailService;
+import br.edu.ifrn.livraria.service.FreteService;
+import br.edu.ifrn.livraria.service.ItemPedidoService;
 import br.edu.ifrn.livraria.service.LivroService;
 import br.edu.ifrn.livraria.service.PedidoService;
+import br.edu.ifrn.livraria.service.UsuarioService;
+
 @Controller
 @RequestMapping("/pedido")
 public class PedidoController {
 	
 	@Autowired
 	private PedidoService pedidoService;
+
+	@Autowired
+	private ItemPedidoService  itemPedidoService;
+	
+	@Autowired
+	private FreteService freteService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
+	
 	@Autowired
 	private LivroService livroService;
+	
+	@Autowired
+	private EmailService emailService;
 	
 	
 	@RequestMapping("/cadastrar")
 	public ModelAndView cadastrar(Pedido pedido) {
 		ModelAndView mv = new ModelAndView("pedido/cadastro");
-		mv.addObject("livros", livroService.listaAll());
+	//	mv.addObject("livros", livroService.listaAll());
 		mv.addObject("pedido", pedido);
 		return mv;
 	}
+	
+	@GetMapping("/addPedido/{id}")
+	public ModelAndView addPedido(@PathVariable("id") Long id, @AuthenticationPrincipal UserDetails userDetails) {
+		
+		String user = userDetails.getUsername();
+		
+		Usuario usuario = usuarioService.findByUsername(user);
+		
+	//	emailService.sendMail("Compra Realizada com Sucesso! você acaba de adquirir um produto da Livraria",
+	//			"Livraria DSC - Compra Realizada", usuario.getEmail());
+		
+		Pedido pedido = new Pedido();
+		
+		pedidoService.cadastrar(pedido);
+		
+		ItemPedido itempedido = itemPedidoService.findOne(id);
+		
+		itempedido.setPedido(pedido);
+		
+		itemPedidoService.save(itempedido);
+		Frete frete = itempedido.getFrete();
+		
+		pedido.setValorTotal(itempedido.getValorTotal());
+		pedido.setDataPedido(new Date());
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		pedido.setDataCompra(format.format(pedido.getDataPedido()));
+		pedido.setStatusPedido(StatusPedido.ANDAMENTO);
+		
+		
+		pedido.setUsuario(usuario);
+		
+		pedidoService.cadastrar(pedido);
+		
+		frete.setPedido(pedido);
+		freteService.save(frete);
+		
+		
+		
+		ModelAndView mv = new ModelAndView("frete/cadastro");
+		mv.addObject("pedido", pedido);
+		mv.addObject("frete", frete);
+		
+		return mv;
+}
 	
 	@GetMapping("/lista")
 	private ModelAndView findAll() {

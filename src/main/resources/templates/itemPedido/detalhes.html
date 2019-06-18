@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+<title>Resumo Pedido</title>
+</head>
+<body>
+	<div class="content-wrapper" layout:fragment="corpo">
+		<div class="panel panel-default">
+			<br>
+			<br>
+			<div class="text-center">
+				<h2 class="h4 text-gray-900 mb-4">&nbsp;&nbsp;&nbsp;Seu
+					Carrinho de Compras</h2>
+			</div>
+			<div class="panel-heading">
+
+				<br>
+				<div th:each="livro : ${itemPedido.livro}">
+					<div class="form-group row">
+						<div class="col-md-6">
+							<div>
+								<img height="200px" width="180px" th:src="@{/images/livro.png}">
+							</div>
+							<br>
+						</div>
+						<div class="col-md-6">
+							<table>
+								<tr>
+									<td>Titulo:</td>
+									<td><div th:text="${livro.titulo}"></div></td>
+								</tr>
+								<tr>
+									<td>Preço:</td>
+									<td><div th:text="${livro.preco}"></div></td>
+								</tr>
+								<tr>
+									<td>Total Itens:</td>
+									<td><div th:text="${itemPedido.quantidade}"></div></td>
+								</tr>
+								<tr>
+									<td>Frete:</td>
+									<td><div th:text="${itemPedido.frete.valor}"></div></td>
+								</tr>
+								<tr>
+									<td>Total Pedido:</td>
+									<td><div th:text="${itemPedido.valorTotal}"></div></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<a class="btn btn-sm btn-primary"
+				th:href="@{/pedido/addPedido/{id}(id=${itemPedido.id})}">Confirmar</a>
+			<button>
+				<a th:href="@{/itemPedido/cadastrar}" class="btn btn-sm btn-danger">Cancelar</a>
+			</button>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

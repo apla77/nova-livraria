@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -56,6 +57,10 @@ public class Usuario implements UserDetails {
 	@NotBlank(message = "Email é uma informação obrigatória.")
 	private String email;
 	
+	@Column(unique = true)
+	@Size(min = 4, message = "USERNAME dev ter pelo menos 4 letras")
+	private String username;
+	
 	@Column(nullable = false, length = 255)
 	@NotBlank(message = "Senha é uma informação obrigatória.")
 	private String senha; 
@@ -67,6 +72,12 @@ public class Usuario implements UserDetails {
 	@Column(nullable = false, length = 15)
 	@NotBlank(message = "Bairro é uma informação obrigatória.")
 	private String bairro;
+	
+	@Column(nullable = false, length = 15)
+	@NotBlank(message = "CEP é uma informação obrigatória.")
+	private String cep;
+	
+	private String uf;
 	
 	@OneToMany(mappedBy="usuario")
 	private List<Pedido> pedido;
@@ -140,6 +151,10 @@ public class Usuario implements UserDetails {
 		this.email = email;
 	}
 
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public String getSenha() {
 		return senha;
 	}
@@ -174,6 +189,23 @@ public class Usuario implements UserDetails {
 
 	public List<Pedido> getPedido() {
 		return pedido;
+	}
+	
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
 	}
 
 	public void setPedido(List<Pedido> pedido) {

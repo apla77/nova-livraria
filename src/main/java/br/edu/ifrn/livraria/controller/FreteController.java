@@ -27,7 +27,7 @@ public class FreteController {
 	
 	@GetMapping("/cadastrar")
 	public ModelAndView cadastrar(Frete frete) {
-		Double valor = 5.0;
+		Double valor = 2.0;
 		frete.setValor(valor);
 		
 		ModelAndView mv = new ModelAndView("/frete/cadastro");

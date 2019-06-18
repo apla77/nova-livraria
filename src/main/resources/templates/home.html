@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout}">
-<head><meta charset="UTF-8" /></head> 
+<head>
+<meta charset="UTF-8" />
+
+<style>
+.holder {
+	display: flex;
+	justify-content: center;
+}
+
+.imagem {
+	width: 200px;
+	margin: 10px;
+	position: relative;
+	text-align: center;
+}
+
+.imagem::after {
+	content: attr(data-title); /* estilo que coloco a legenda no lugar */
+	position: absolute;
+	width: 100%;
+	bottom: -20px;
+	left: 0;
+}
+
+div.box {
+	width: 150px;
+	display: inline-block;
+}
+</style>
+</head>
 <body>
-		
-	<section class="layout-content" layout:fragment="corpo">	
+
+	<section class="layout-content" layout:fragment="corpo">
 		<nav class="navbar navbar-expand-md bg-light">
 			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<i class="oi oi-caret-right"></i>
-						<span>Lançamentos</span>
-					</li>
+					<li class="nav-item active"><i class="oi oi-caret-right"></i>
+						<span>Lançamentos</span></li>
 				</ul>
 			</div>
 		</nav>
-		
+
 		<div class="container">
 			<div id="list-home" class="row">
-				<div class="col-4">
+				<div class="col-3">
 					<div class="list-group" id="list-tab" role="tablist">
 						<a class="list-group-item list-group-item-action active"
 							id="list-spring-boot-list" data-toggle="list" href="#spring-boot"
@@ -44,21 +71,33 @@
 							role="tabpanel" aria-labelledby="list-spring-boot-list">
 							<a href="https://projects.spring.io/spring-boot/">Matemática</a>
 							Estudar 123.
-						</div>
+							
+							<div class="form-row">
+								<div class="form-group col-md-4">
+									<div>
+										<div>
+											<img height="180px" width="160px"
+												th:src="@{/images/livro.png}">
+										</div>
+									</div>
+								</div>
+							</div>
+					    </div>
+					    </div>
+					    </div>
 						<div class="tab-pane fade" id="sts" role="tabpanel"
 							aria-labelledby="list-sts-list">
-							The <a href="https://spring.io/tools">Spring Boot</a> Tentando 
+							The <a href="https://spring.io/tools">Spring Boot</a> Tentando
 							aprender spring boot.
 						</div>
 						<div class="tab-pane fade" id="thymeleaf" role="tabpanel"
 							aria-labelledby="list-thymeleaf-list">
-							<a href="http://www.thymeleaf.org/">Leia Mais</a> Leia 
-							o maximo que poder...
+							<a href="http://www.thymeleaf.org/">Leia Mais</a> Leia o maximo
+							que poder...
 						</div>
 						<div class="tab-pane fade" id="webjars" role="tabpanel"
 							aria-labelledby="list-webjars-list">
-							<a href="https://www.webjars.org/">SPFC</a> Capeão 
-							2019...
+							<a href="https://www.webjars.org/">SPFC</a> Capeão 2019...
 						</div>
 						<div class="tab-pane fade" id="hibernate" role="tabpanel"
 							aria-labelledby="list-hibernate-list">
@@ -66,14 +105,14 @@
 						</div>
 						<div class="tab-pane fade" id="bootstrap" role="tabpanel"
 							aria-labelledby="list-bootstrap-list">
-							<a href="https://getbootstrap.com/">Python</a> melhor 
-							linguagem para aprender a programar
+							<a href="https://getbootstrap.com/">Python</a> melhor linguagem
+							para aprender a programar
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-	</section>		
+
+	</section>
 </body>
 </html>

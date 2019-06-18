@@ -1,101 +1,61 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"></head>
+<head>
+<meta charset="UTF-8">
+</head>
 <body>
-			<nav class="sidebar sidebar-open" th:fragment="nav-sidebar"> 
-				<ul class="nav nav-pills">
-					<li class="nav-item"><a class="nav-link " href="/"> <i
-							class="oi oi-home"></i> <span>Home</span>
-					</a></li>
-				</ul>
+	<nav class="sidebar sidebar-open" th:fragment="nav-sidebar">
+		<ul class="nav nav-pills">
+			<li class="nav-item"><a class="nav-link " href="/"> <i
+					class="oi oi-home"></i> <span>Home</span>
+			</a></li>
+		</ul>
 
-				<ul class="nav nav-pills">
-					<li class="nav-item"><span class="nav-link active" >Opções de Menu</span></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="collapse"
-					href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-						<i class="menu-icon mdi mdi-content-copy"></i> <span
-						class="menu-title">Categoria</span> <i class="menu-arrow"></i></a>
-					<div class="collapse" id="ui-basic">
-						<ul class="nav flex-column sub-menu">
-							<li class="nav-item"><a class="nav-link"
-								th:href="@{/categoria/cadastrar}">Cadastrar</a></li>
-							<li class="nav-item"><a class="nav-link"
-								th:href="@{/categoria/lista}">Listar</a></li>
-						</ul>
-					</div></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="collapse"
-					href="#ui-autor" aria-expanded="false" aria-controls="ui-basic">
-						<i class="menu-icon mdi mdi-content-copy"></i> <span
-						class="menu-title">Autor</span> <i class="menu-arrow"></i></a>
-					<div class="collapse" id="ui-autor">
-						<ul class="nav flex-column sub-menu">
-							<li class="nav-autor"><a class="nav-link"
-								th:href="@{/autor/cadastrar}">Cadastrar</a></li>
-							<li class="nav-autor"><a class="nav-link"
-								th:href="@{/autor/lista}">Listar</a></li>
-						</ul>
-					</div></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="collapse"
-					href="#ui-editora" aria-expanded="false" aria-controls="ui-basic">
-						<i class="menu-icon mdi mdi-content-copy"></i> <span
-						class="menu-title">Editora</span> <i class="menu-arrow"></i></a>
-					<div class="collapse" id="ui-editora">
-						<ul class="nav flex-column sub-menu">
-							<li class="nav-editora"><a class="nav-link"
-								th:href="@{/editora/cadastrar}">Cadastrar</a></li>
-							<li class="nav-editora"><a class="nav-link"
-								th:href="@{/editora/lista}">Listar</a></li>
-						</ul>
-					</div></li> 
-					<li class="nav-item"><a class="nav-link" data-toggle="collapse"
-					href="#ui-livro" aria-expanded="false" aria-controls="ui-basic">
-						<i class="menu-icon mdi mdi-content-copy"></i> <span
-						class="menu-title">Livro</span> <i class="menu-arrow"></i></a>
-					<div class="collapse" id="ui-livro">
-						<ul class="nav flex-column sub-menu">
-							<li class="nav-livro"><a class="nav-link"
-								th:href="@{/livro/cadastrar}">Cadastrar</a></li>
-							<li class="nav-livro"><a class="nav-link"
-								th:href="@{/livro/lista}">Listar</a></li>
-						</ul>
-					</div></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="collapse"
-					href="#ui-cidade" aria-expanded="false" aria-controls="ui-basic">
-						<i class="menu-icon mdi mdi-content-copy"></i> <span
-						class="menu-title">Cidade</span> <i class="menu-arrow"></i></a>
-					<div class="collapse" id="ui-cidade">
-						<ul class="nav flex-column sub-menu">
-							<li class="nav-cidade"><a class="nav-link"
-								th:href="@{/cidade/cadastrar}">Cadastrar</a></li>
-							<li class="nav-cidade"><a class="nav-link"
-								th:href="@{/cidade/lista}">Listar</a></li>
-						</ul>
-					</div></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="collapse"
-					href="#ui-usuario" aria-expanded="false" aria-controls="ui-basic">
-						<i class="menu-icon mdi mdi-content-copy"></i> <span
-						class="menu-title">Usuario</span> <i class="menu-arrow"></i></a>
-					<div class="collapse" id="ui-usuario">
-						<ul class="nav flex-column sub-menu">
-							<li class="nav-usuario"><a class="nav-link"
-								th:href="@{/usuario/cadastrar}">Cadastrar</a></li>
-							<li class="nav-usuario"><a class="nav-link"
-								th:href="@{/usuario/lista}">Listar</a></li>
-						</ul>
-					</div></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="collapse"
-					href="#ui-pedido" aria-expanded="false" aria-controls="ui-basic">
-						<i class="menu-icon mdi mdi-content-copy"></i> <span
-						class="menu-title">Pedido</span> <i class="menu-arrow"></i></a>
-					<div class="collapse" id="ui-pedido">
-						<ul class="nav flex-column sub-menu">
-							<li class="nav-pedido"><a class="nav-link"
-								th:href="@{/pedido/cadastrar}">Cadastrar</a></li>
-							<li class="nav-pedido"><a class="nav-link"
-								th:href="@{/pedido/lista}">Listar</a></li>
-						</ul>
-					</div></li>
-				</ul>
-			</nav>
+		<ul class="nav nav-pills">
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseTwo"
+				aria-expanded="false" aria-controls="collapseTwo"> <i
+					class="fas fa-fw fa-clipboard"></i> <span>Cadastrar</span></a>
+
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+					data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/categoria/cadastrar}">Categoria</a>
+						<a class="collapse-item" th:href="@{/autor/cadastrar}">Autor</a> <a
+							class="collapse-item" th:href="@{/editora/cadastrar}">Editora</a>
+						<a class="collapse-item" th:href="@{/livro/cadastrar}">Livro</a> <a
+							class="collapse-item" th:href="@{/usuario/cadastrar}">Usuario</a>
+					</div>
+				</div></li>
+				<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseUtilities"
+				aria-expanded="true" aria-controls="collapseUtilities"> <i
+					class="fas fa-fw fa-search"></i> <span>Consultar</span></a>
+					
+				<div id="collapseUtilities" class="collapse"
+					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/categoria/lista}">Categoria</a>
+						<a class="collapse-item" th:href="@{/autor/lista}">Autor</a>
+						<a class="collapse-item" th:href="@{/editora/lista}">Editora</a>
+						<a class="collapse-item" th:href="@{/livro/lista}">Livro</a>
+						<a class="collapse-item" th:href="@{/usuario/lista}">Usuario</a>
+					</div>
+				</div>
+			</li>
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseComprar"
+				aria-expanded="false" aria-controls="collapseComprar"> <i
+					class="fas fa-fw fa-book"></i> <span>Fazer Pedido</span></a>
+					
+				<div id="collapseComprar" class="collapse" aria-labelledby="headingTwo"
+					data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/itemPedido/cadastrar}">Livros</a>
+					</div>
+				</div>
+</li>
+		</ul>
+	</nav>
 </body>
 </html>

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -31,14 +32,13 @@ public class Autor implements Serializable{
 	private String nome;
 	
 	@Column(nullable = false, length = 15)
-	//@CPF(message="CPF Inválido")
 	private String cpf;
 	
 	@Column(nullable = false, length = 60)
 	@Email(message="Valor é Obrigagório")
 	private String email;
 	
-	@OneToMany(mappedBy="autor")
+	@ManyToMany(mappedBy="autor")
 	private List<Livro> livro;
 
 	public Long getId() {

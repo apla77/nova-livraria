@@ -30,16 +30,18 @@ public class Pedido implements Serializable {
 	@OneToMany(mappedBy = "pedido")
 	private List<Livro> livros;
 	
-
-	@Column(nullable = true, length = 30)
-	private String dataPedido;
-	
 	@Column(nullable = true, length = 100)
 	private double valorTotal;
 	
 	@ManyToOne
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
+	
+	private Date dataPedido;
+	
+	private String dataCompra;
+	
+	private StatusPedido statusPedido;
 
 	public Long getId() {
 		return id;
@@ -64,13 +66,30 @@ public class Pedido implements Serializable {
 	public void setLivros(List<Livro> livros) {
 		this.livros = livros;
 	}
+	
 
-	public String getDataPedido() {
+	public Date getDataPedido() {
 		return dataPedido;
 	}
 
-	public void setDataPedido(String dataPedido) {
+	public void setDataPedido(Date dataPedido) {
 		this.dataPedido = dataPedido;
+	}
+	
+	public String getDataCompra() {
+		return dataCompra;
+	}
+
+	public void setDataCompra(String dataCompra) {
+		this.dataCompra = dataCompra;
+	}
+
+	public StatusPedido getStatusPedido() {
+		return statusPedido;
+	}
+
+	public void setStatusPedido(StatusPedido statusPedido) {
+		this.statusPedido = statusPedido;
 	}
 
 	public double getValorTotal() {

@@ -1,17 +1,18 @@
 package br.edu.ifrn.livraria.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
-
-import org.springframework.format.annotation.NumberFormat;
-import org.springframework.format.annotation.NumberFormat.Style;
 
 
 @Entity
@@ -22,6 +23,9 @@ public class Livro implements Serializable{
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@Lob
+	private byte[] imagemLivro;
 	
 	@Column(nullable = false, length = 100)
 	@NotBlank(message = "Titulo é uma informação obrigatória.")
@@ -43,12 +47,12 @@ public class Livro implements Serializable{
 	@NotBlank(message = "ISBN é uma informação obrigatória!")
 	private String isbn;
 	
-	@Column(nullable = false, length = 30)
-	@NotBlank(message = "Pesso é uma informação obrigatória!")
-	private String peso;
+	//@Column(nullable = false, length = 30)
+	//@NotBlank(message = "Pesso é uma informação obrigatória!")
+	private double peso;
 	
-	@Column(nullable = false, length = 30)
-	@NotBlank(message = "Preço é uma informação obrigatória!")
+	//@Column(nullable = false, length = 30)
+	//@NotBlank(message = "Preço é uma informação obrigatória!")
 	private String preco;
 	
 	@ManyToOne
@@ -59,13 +63,17 @@ public class Livro implements Serializable{
 	@JoinColumn(name = "categoria_id_fk")
 	public Categoria categoria;
 	
-	@ManyToOne
-	@JoinColumn(name = "autor_id_fk")
-	private Autor autor;
+	@ManyToMany
+	@JoinTable(name="livro_autor")
+	public List<Autor> autor;
 	
 	@ManyToOne
 	@JoinColumn(name = "pedido_id_fk")
 	private Pedido pedido;
+	
+	@ManyToMany(mappedBy="livro")
+	public List<ItemPedido> itemPedido;
+
 
 	public Long getId() {
 		return id;
@@ -73,6 +81,14 @@ public class Livro implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public byte[] getImagemLivro() {
+		return imagemLivro;
+	}
+
+	public void setImagemLivro(byte[] imagemLivro) {
+		this.imagemLivro = imagemLivro;
 	}
 
 	public String getTitulo() {
@@ -99,11 +115,11 @@ public class Livro implements Serializable{
 		this.edicao = edicao;
 	}
 
-	public String getPeso() {
+	public double getPeso() {
 		return peso;
 	}
 
-	public void setPeso(String peso) {
+	public void setPeso(double peso) {
 		this.peso = peso;
 	}
 
@@ -147,12 +163,20 @@ public class Livro implements Serializable{
 		this.isbn = isbn;
 	}
 
-	public Autor getAutor() {
+	public List<Autor> getAutor() {
 		return autor;
 	}
 
-	public void setAutor(Autor autor) {
+	public void setAutor(List<Autor> autor) {
 		this.autor = autor;
+	}
+
+	public List<ItemPedido> getItemPedido() {
+		return itemPedido;
+	}
+
+	public void setItemPedido(List<ItemPedido> itemPedido) {
+		this.itemPedido = itemPedido;
 	}
 
 	public Pedido getPedido() {

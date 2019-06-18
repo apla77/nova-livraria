@@ -11,6 +11,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class ItemPedido implements Serializable{
@@ -25,10 +26,14 @@ public class ItemPedido implements Serializable{
 	
 	private double valorTotal;
 	
+	@NotBlank(message = "Cep é uma informação obrigatória.")
 	private String  cep;
 	
+	private String preco;
+	private String prazo;
+	
 	@ManyToMany
-	@JoinTable(name="itemPedido_livro")
+	@JoinTable(name="itemPedidoLivro")
 	public List<Livro> livro;
 	
 	@ManyToOne
@@ -92,6 +97,23 @@ public class ItemPedido implements Serializable{
 
 	public void setFrete(Frete frete) {
 		this.frete = frete;
+	}
+
+	
+	public String getPreco() {
+		return preco;
+	}
+
+	public void setPreco(String preco) {
+		this.preco = preco;
+	}
+
+	public String getPrazo() {
+		return prazo;
+	}
+
+	public void setPrazo(String prazo) {
+		this.prazo = prazo;
 	}
 
 	public static long getSerialversionuid() {

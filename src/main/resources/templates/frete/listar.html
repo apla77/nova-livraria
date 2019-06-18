@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+<title>Lista de frete</title>
+</head>
+<body>
+		<div class="content-wrapper" layout:fragment="corpo">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+			<strong>Detalhes do Frete do Pedido</strong>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table class="table table-sm table-striped table-hover table-bordered">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Cep Destino</th>
+									<th>Bairro</th>
+									<th>Rua</th>
+									<th>Ações</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td th:text="${frete.id}"></td>
+									<td th:text="${frete.cep}"></td>
+									<td th:text="${frete.bairro}"></td>
+									<td th:text="${frete.rua}"></td>
+									<td>
+										<div class="btn-group pull-right">
+											<a class="btn btn-sm btn-info" th:href="@{/frete/alldetails/{id}(id=${frete.id})}" >Mais Detalhes</a>
+									   </div>
+									</td>		
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<a class="btn btn-sm btn-success" th:href="@{/itemPedido/cadastrar}" >Realizar Nova Compra</a>
+					<a class="btn btn-sm btn-info" th:href="@{/}" >Sair</a>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

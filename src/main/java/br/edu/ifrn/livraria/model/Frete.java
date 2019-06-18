@@ -31,8 +31,8 @@ public class Frete implements Serializable{
 	
 	private String cepOrigem;
 
-	@NotBlank(message = "Cep é uma informação obrigatória.")
-	private String cepDestino;
+	//@NotBlank(message = "Cep é uma informação obrigatória.")
+	private String cep;
 	
 	private String uf;
 	
@@ -104,13 +104,14 @@ public class Frete implements Serializable{
 	public void setCepOrigem(String cepOrigem) {
 		this.cepOrigem = cepOrigem;
 	}
+	
 
-	public String getCepDestino() {
-		return cepDestino;
+	public String getCep() {
+		return cep;
 	}
 
-	public void setCepDestino(String cepDestino) {
-		this.cepDestino = cepDestino;
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 	public String getUf() {

@@ -23,11 +23,11 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		System.out.println("----- Criando Usuário ------");
-	//	creatUsuarioAdmin();
-	//	createUsuario();
+		creatUsuarioAdmin();
+		createUsuario();
 		System.out.println("----- Usuário Criado com Sucesso! -----");
 	}
-	/*
+	
 	private void creatUsuarioAdmin() {
 		Usuario usuario = new Usuario();
 		usuario.setEmail("apla77@gmail.com");
@@ -65,5 +65,5 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 			serviceUsuario.add(usuario2);
 		}
 	}
-	*/
+	
 }

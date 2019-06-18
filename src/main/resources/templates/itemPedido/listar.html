@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+<title>Resumo do Pedido</title>
+</head>
+<body>
+	<div class="content-wrapper" layout:fragment="corpo">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<strong>Item</strong>
+				<div class="form-group row">
+					<div>
+						<div th:each="itemPedido : ${itemPedidos}">
+							<hr class="sidebar-divider my-1">
+							<div>
+								<i class="fas fa-fw fa-book"></i>
+							</div>
+							<div th:each="livro : ${itemPedido.livro}">
+								<div th:text="${livro.titulo}"></div>
+								<div th:text="${livro.sinopse}"></div>
+								<div th:text="${livro.ano}"></div>
+								<div th:text="${livro.edicao}"></div>
+								<div th:text="${livro.editora.nome}"></div>
+								<div th:text="${livro.categoria.nome}"></div>
+
+							</div>
+							<label>Valor Pedido com Frete</label>
+							<div th:text="${itemPedido.valorTotal}"></div>
+							<div th:text="${itemPedido.quantidade}"></div>
+							<label>Valor do Frete</label>
+							<div th:text="${itemPedido.frete.valor}"></div>
+							<a class="btn btn-sm btn-primary"
+								th:href="@{/pedido/addPedido/{id}(id=${itemPedido.id})}">Confirmar</a>
+							<hr class="sidebar-divider my-0">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>
