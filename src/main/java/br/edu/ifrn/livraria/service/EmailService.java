@@ -56,4 +56,22 @@ public class EmailService {
 			e.printStackTrace();
 		}
 	}
+	
+	public void sendMail(String texto, String email){
+		
+		SimpleMailMessage message = new SimpleMailMessage();
+		
+		System.out.println(email + " *****************************************");
+		
+        message.setText(texto);
+        message.setSubject("Sua compra foi realizada com Sucesso! Livraria");
+        message.setTo(email);
+        message.setFrom("gestaoescolaronline1.0@gmail.com");
+        
+        try {
+        	emailSender.send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+	}
 }

@@ -35,6 +35,7 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 		usuario.setBairro("Centro");
 		usuario.setRua("7 de Maio");
 		usuario.setMunicipio("Encanto");
+		usuario.setCep("59900000");
 		usuario.setNome("Mauricio");
 		usuario.setSobrenome("F. Fernandes");
 		Role role = serviceRole.getNome("ADMINISTRADOR");
@@ -43,7 +44,7 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 			role.setNome("ADMINISTRADOR");
 			serviceRole.add(role);
 			usuario.getRole().add(role);
-			serviceUsuario.add(usuario);
+			serviceUsuario.add(usuario); 
 		}
 	}
 	
@@ -54,6 +55,7 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 		usuario2.setBairro("Centro");
 		usuario2.setRua("13 de Maio");
 		usuario2.setMunicipio("Itapipoca");
+		usuario2.setCep("59900000");
 		usuario2.setNome("Maria de Fátima");
 		usuario2.setSobrenome("Ferreira Fernandes");
 		Role role = serviceRole.getNome("CLIENTE");

@@ -46,23 +46,23 @@ public class UserController {
 	@PostMapping("/salvar")
 	public ModelAndView salvar(Usuario usuario) {
 		
-		/*
+		
 		Role role = serviceRole.getNome("CLIENTE");
 		if(role == null) {
 			role = new Role();
 			role.setNome("CLIENTE");
 			serviceRole.add(role);
 		}
-		*/
+		
 		Usuario usuario2 = service.getEmail(usuario.getEmail());
 		ModelAndView view = new ModelAndView("login");
 		if(usuario2 != null) {
 			
 				view.addObject("error", "Email já está cadastrado no sistema!");
 		}else {
-			Role role = new Role();
-			role.setNome("CLIENTE");
-			serviceRole.add(role);
+			//Role role = new Role();
+			//role.setNome("CLIENTE");
+			//serviceRole.add(role);
 			usuario.getRole().add(role);
 			service.add(usuario);
 			Email email = new Email();

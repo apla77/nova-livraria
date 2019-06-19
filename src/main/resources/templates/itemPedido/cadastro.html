@@ -4,6 +4,8 @@
 <meta charset="UTF-8" />
 <script th:src="@{/js/demo/jquery.mask.min.js}"></script>
 <title>Fazer Pedido</title>
+
+
  
 <script type="text/javascript">
 	function limpa_formulário_cep() {
@@ -27,7 +29,7 @@
 
 				$.getJSON(
 						'https://apiservicocorreios.herokuapp.com/' + cep
-								+ '/20,0/50,0/50,0/50,0/50.0',
+								+ '/1,0/20,0/10,0/20,0/20.0',
 						function(dataobj) {
 
 						}).done(function(dataobj) {
@@ -131,7 +133,7 @@
 						
 								</div>
 
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-8">
 									<div th:field="*{livro}"></div>
 
 									<table>
@@ -186,10 +188,10 @@
 				<div class="form-group row">
 					<div class="col-md-4"
 						th:classappend="${#fields.hasErrors('preco')}? 'has-error'">
-						<label>Preço</label> <input id="preco" name="preco" type="text"
+						<label>Frete</label> <input id="preco" name="preco" type="text"
 							class="form-control input-sm" th:field="*{preco}"
 							disabled="disabled" />
-					</div>
+					</div> 
 					<div class="col-md-4"
 						th:classappend="${#fields.hasErrors('prazo')}? 'has-error'">
 						<label>Prazo</label> <input id="prazo" name="prazo" type="text"
@@ -201,7 +203,7 @@
 					<button type="submit" class="btn btn-primary btn-md">Ir Para o
 						Carrinho De Compras</button>&nbsp;&nbsp;&nbsp;
 					<button  class="btn btn-danger">
-						<a th:href="@{/itemPedido/cadastrar}"
+						<a th:href="@{entrar}"
 							class="btn btn-sm btn-danger">Cancelar Pedido</a>
 					</button>
 				</div>

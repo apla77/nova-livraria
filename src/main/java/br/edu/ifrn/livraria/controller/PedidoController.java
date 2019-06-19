@@ -29,6 +29,7 @@ import br.edu.ifrn.livraria.service.FreteService;
 import br.edu.ifrn.livraria.service.ItemPedidoService;
 import br.edu.ifrn.livraria.service.LivroService;
 import br.edu.ifrn.livraria.service.PedidoService;
+import br.edu.ifrn.livraria.service.SessionService;
 import br.edu.ifrn.livraria.service.UsuarioService;
 
 @Controller
@@ -53,11 +54,15 @@ public class PedidoController {
 	@Autowired
 	private EmailService emailService;
 	
+	@Autowired
+	private SessionService<Usuario> serviceSession;
+	
 	
 	@RequestMapping("/cadastrar")
 	public ModelAndView cadastrar(Pedido pedido) {
 		ModelAndView mv = new ModelAndView("pedido/cadastro");
 	//	mv.addObject("livros", livroService.listaAll());
+		mv.addObject("logado", serviceSession.getSession("usuario"));
 		mv.addObject("pedido", pedido);
 		return mv;
 	}
@@ -67,10 +72,11 @@ public class PedidoController {
 		
 		String user = userDetails.getUsername();
 		
-		Usuario usuario = usuarioService.findByUsername(user);
+		Usuario usuario = serviceSession.getSession("usuario");
 		
-	//	emailService.sendMail("Compra Realizada com Sucesso! você acaba de adquirir um produto da Livraria",
-	//			"Livraria DSC - Compra Realizada", usuario.getEmail());
+		System.out.println(" Chama função sendMail *********************** " + usuario.getEmail());
+		emailService.sendMail("Livraria Nova - Compra Realizada", usuario.getEmail());
+		System.out.println(" depois da função sendMail *****************************************");
 		
 		Pedido pedido = new Pedido();
 		
@@ -97,14 +103,12 @@ public class PedidoController {
 		frete.setPedido(pedido);
 		freteService.save(frete);
 		
-		
-		
 		ModelAndView mv = new ModelAndView("frete/cadastro");
 		mv.addObject("pedido", pedido);
 		mv.addObject("frete", frete);
 		
 		return mv;
-}
+	}
 	
 	@GetMapping("/lista")
 	private ModelAndView findAll() {
@@ -118,7 +122,7 @@ public class PedidoController {
     public ModelAndView salvar(@Valid Pedido pedido, BindingResult result) {
 		 
 		if(result.hasErrors()) {
-		//	return cadastrar(pedido);
+			return cadastrar(pedido);
 	    }
 
 		pedidoService.cadastrar(pedido);
