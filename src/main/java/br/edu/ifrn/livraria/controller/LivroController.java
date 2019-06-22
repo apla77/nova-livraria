@@ -46,7 +46,7 @@ public class LivroController {
 	}
 	
 	@PostMapping("/salvar")
-	public ModelAndView salvar(@Valid Livro livro, BindingResult result) {
+	public ModelAndView salvar(@Valid Livro livro, BindingResult result	) {
 		
 		if(result.hasErrors()) {
 			return cadastrar(livro);

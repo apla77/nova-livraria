@@ -49,11 +49,17 @@ public class Livro implements Serializable{
 	
 	//@Column(nullable = false, length = 30)
 	//@NotBlank(message = "Pesso é uma informação obrigatória!")
-	private double peso;
+	private Double peso;
 	
 	//@Column(nullable = false, length = 30)
 	//@NotBlank(message = "Preço é uma informação obrigatória!")
 	private String preco;
+	
+	private String comprimento;
+	
+	private String altura;
+	
+	private String largura;
 	
 	@ManyToOne
 	@JoinColumn(name = "editora_id_fk")
@@ -115,12 +121,36 @@ public class Livro implements Serializable{
 		this.edicao = edicao;
 	}
 
-	public double getPeso() {
+	public Double getPeso() {
 		return peso;
 	}
 
-	public void setPeso(double peso) {
+	public void setPeso(Double peso) {
 		this.peso = peso;
+	}
+
+	public String getComprimento() {
+		return comprimento;
+	}
+
+	public void setComprimento(String comprimento) {
+		this.comprimento = comprimento;
+	}
+
+	public String getAltura() {
+		return altura;
+	}
+
+	public void setAltura(String altura) {
+		this.altura = altura;
+	}
+
+	public String getLargura() {
+		return largura;
+	}
+
+	public void setLargura(String largura) {
+		this.largura = largura;
 	}
 
 	public String getPreco() {

@@ -80,6 +80,9 @@ public class UsuarioService implements UserDetailsService{
 	public Usuario findByUsername(String username){
 		return repository.findByUsername(username);
 	}
-
+	
+	public List<Usuario> buscarPorNome(String nome){
+		return repository.findByName(nome);
+	}
 	
 }

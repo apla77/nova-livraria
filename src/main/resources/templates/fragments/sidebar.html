@@ -21,10 +21,11 @@
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/categoria/cadastrar}">Categoria</a>
-						<a class="collapse-item" th:href="@{/autor/cadastrar}">Autor</a> <a
-							class="collapse-item" th:href="@{/editora/cadastrar}">Editora</a>
-						<a class="collapse-item" th:href="@{/livro/cadastrar}">Livro</a> <a
-							class="collapse-item" th:href="@{/usuario/cadastrar}">Usuario</a>
+						<a class="collapse-item" th:href="@{/autor/cadastrar}">Autor</a> 
+						<a class="collapse-item" th:href="@{/editora/cadastrar}">Editora</a>
+						<a class="collapse-item" th:href="@{/cidade/cadastrar}">Cidade</a>
+						<a class="collapse-item" th:href="@{/livro/cadastrar}">Livro</a> 
+						<a class="collapse-item" th:href="@{/usuario/cadastrar}">Usuario</a>
 					</div>
 				</div></li>
 				<li class="nav-item"><a class="nav-link collapsed" href="#"
@@ -38,6 +39,7 @@
 						<a class="collapse-item" th:href="@{/categoria/lista}">Categoria</a>
 						<a class="collapse-item" th:href="@{/autor/lista}">Autor</a>
 						<a class="collapse-item" th:href="@{/editora/lista}">Editora</a>
+						<a class="collapse-item" th:href="@{/cidade/lista}">Cidade</a>
 						<a class="collapse-item" th:href="@{/livro/lista}">Livro</a>
 						<a class="collapse-item" th:href="@{/usuario/lista}">Usuario</a>
 					</div>
@@ -47,14 +49,13 @@
 				data-toggle="collapse" data-target="#collapseComprar"
 				aria-expanded="false" aria-controls="collapseComprar"> <i
 					class="fas fa-fw fa-book"></i> <span>Fazer Pedido</span></a>
-					
-				<div id="collapseComprar" class="collapse" aria-labelledby="headingTwo"
-					data-parent="#accordionSidebar">
+
+				<div id="collapseComprar" class="collapse"
+					aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/itemPedido/cadastrar}">Livros</a>
 					</div>
-				</div>
-</li>
+				</div></li>
 		</ul>
 	</nav>
 </body>

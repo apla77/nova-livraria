@@ -69,7 +69,7 @@ public class ItemPedidoController {
 			i++;
 		}
 		
-		String peso = Double.toString(pesolivros);
+	//	String peso = Double.toString(pesolivros);
 		
 		RestTemplate template = new RestTemplate();
 		

@@ -6,12 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import br.edu.ifrn.livraria.model.Autor;
 import br.edu.ifrn.livraria.model.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	
-public List<Usuario> findByNomeLike(String name);
+	public List<Usuario> findByNomeLike(String name);
 	
 	@Query
 	public Usuario findByEmail(String email);
@@ -21,5 +22,8 @@ public List<Usuario> findByNomeLike(String name);
 	public Usuario findByNome(String nome);
 	@Query
 	Usuario findByUsername(String username);
+	
+	@Query("select u from Usuario u where u.nome = ?1")
+	public List<Usuario> findByName(String nome);
 
 }

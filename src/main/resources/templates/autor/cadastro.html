@@ -24,7 +24,7 @@
 	        
 	        	<div th:replace="fragments/alert"></div>
 	        	
-				<form th:action="${autor.id == null} ? @{/autor/salvar} : @{/autor/editar}" 
+				<form th:action="@{/autor/salvar}" 
 				      th:object="${autor}" method="POST">
 				    <div class="form-row">
 				        <div class="form-group col-md-7">
