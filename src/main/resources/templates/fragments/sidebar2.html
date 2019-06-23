@@ -3,11 +3,7 @@
 <head><meta charset="UTF-8"></head>
 <body>
 			<nav class="sidebar sidebar-open" th:fragment="nav-sidebar-2"> 
-				<ul class="nav nav-pills">
-					<li class="nav-item"><a class="nav-link " href="/"> <i
-							class="oi oi-home"></i> <span>Home</span>
-					</a></li>
-				</ul>
+				
 
 				<ul class="nav nav-pills">
 					<li class="nav-item"><span class="nav-link active" >Faça seu Pedido</span></li>
@@ -22,6 +18,11 @@
 						<a class="collapse-item" th:href="@{/itemPedido/cadastrar}">Livros</a>
 					</div>
 				</div></li>
+				</ul>
+				<ul class="nav nav-pills">
+					<li class="nav-item"><a class="nav-link " href="/"> <i
+							class="oi oi-account-logout"></i> <span>Home</span>
+					</a></li>
 				</ul>
 			</nav>
 </body>
