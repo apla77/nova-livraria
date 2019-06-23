@@ -139,7 +139,7 @@ public class ItemPedidoController {
 		ModelAndView mv = new ModelAndView("itemPedido/detalhes");
 		mv.addObject("itemPedido", service.findOne(id));
 		
-		return mv;
+		return mv; 
 	}
 	
 	@GetMapping("/delete/{id}")

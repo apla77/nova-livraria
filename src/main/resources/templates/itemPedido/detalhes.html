@@ -7,8 +7,7 @@
 <body>
 	<div class="content-wrapper" layout:fragment="corpo">
 		<div class="panel panel-default">
-			<br>
-			<br>
+			<br> <br>
 			<div class="text-center">
 				<h2 class="h4 text-gray-900 mb-4">&nbsp;&nbsp;&nbsp;Seu
 					Carrinho de Compras</h2>
@@ -16,15 +15,17 @@
 			<div class="panel-heading">
 
 				<br>
+				
 				<div th:each="livro : ${itemPedido.livro}">
 					<div class="form-group row">
-						<div class="col-md-6">
+					<div class="col-sm-3">
+
 							<div>
-								<img height="200px" width="180px" th:src="@{/images/livro.png}">
+								<img height="100px" width="80px" th:src="@{/images/livro.png}">
 							</div>
 							<br>
 						</div>
-						<div class="col-md-6">
+						<div class="col-sm-9">
 							<table>
 								<tr>
 									<td>Titulo:</td>
@@ -34,30 +35,37 @@
 									<td>Preço:</td>
 									<td><div th:text="${livro.preco}"></div></td>
 								</tr>
-								<tr>
-									<td>Total Itens:</td>
-									<td><div th:text="${itemPedido.quantidade}"></div></td>
-								</tr>
-								<tr>
-									<td>Frete:</td>
-									<td><div th:text="${itemPedido.frete.valor}"></div></td>
-								</tr>
-								<tr>
-									<td>Total Pedido:</td>
-									<td><div th:text="${itemPedido.valorTotal}"></div></td>
-								</tr>
+
 							</table>
 						</div>
 					</div>
 				</div>
+
+				<table>
+					<tr>
+
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;Valor do Frete:</td>
+						<td><div th:text="${itemPedido.frete.valor}"></div></td>
+					</tr>
+					<tr>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;Total do Pedido:</td>
+						<td><div th:text="${itemPedido.valorTotal}"></div></td>
+					</tr>
+					<tr>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;Total de Itens:</td>
+						<td><div th:text="${itemPedido.quantidade}"></div></td>
+					</tr>
+				</table>
 			</div>
-		</div>
+		</div><br><br>
+		
 		<div class="form-group row">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<a class="btn btn-sm btn-primary"
 				th:href="@{/pedido/addPedido/{id}(id=${itemPedido.id})}">Confirmar</a>
-			<button>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a th:href="@{/itemPedido/cadastrar}" class="btn btn-sm btn-danger">Cancelar</a>
-			</button>
+			
 		</div>
 	</div>
 	</div>
