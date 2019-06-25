@@ -20,50 +20,6 @@
 	        </nav>
 	
 	        <div class="container">
-	         <!-- 
-	            <p>
-	                <i class="oi oi-magnifying-glass"></i><span></span>
-	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseNome"
-	                        aria-controls="collapseNome">Titulo
-	                </button>
-	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCargo"
-	                        aria-controls="collapseCargo">Sinopse
-	                </button>
-	            </p>
-	            <div class="row">
-	                <div class="col">
-	                    <div class="collapse" id="collapseNome">
-	
-	                        <nav class="navbar navbar-light bg-light">
-	                            <form class="form-inline" method="GET" th:action="@{/livro/buscar/titulo}">
-	                                <input class="form-control mr-sm-2" type="search" placeholder="titulo" aria-label="Search"
-	                                       th:name="titulo" />
-	                                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
-	                            </form>
-	                        </nav>
-	
-	                    </div>
-	                </div>
-	            </div>
-	             
-				<div class="row">
-	                <div class="col">
-	                    <div class="collapse" id="collapseCargo">
-	
-	                        <nav class="navbar navbar-light bg-light">
-	                            <form class="form-inline" method="GET" th:action="@{/livros/buscar/autor}">
-	                                <select class="form-control mr-sm-2" th:name="id" aria-label="Search">
-	                                    <option value="">Autor</option>
-	                                    <option th:each="a : ${autores}" th:value="${a.id}" th:text="${a.titulo}">João</option>
-	                                </select>
-	                                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
-	                            </form>
-	                        </nav>
-	
-	                    </div>
-	                </div>
-	            </div>
-	            -->
 	            <div class="table-responsive">
 	            
 	            	<div th:replace="fragments/alert"></div>

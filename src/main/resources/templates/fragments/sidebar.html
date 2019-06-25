@@ -5,7 +5,11 @@
 </head>
 <body>
 	<nav class="sidebar sidebar-open" th:fragment="nav-sidebar">
-		
+		<ul class="nav nav-pills">
+					<li class="nav-item"><a class="nav-link " href="/"> <i
+							class="oi oi-user"></i> <span></span>
+					</a></li>
+		</ul>
 
 		<ul class="nav nav-pills">
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
@@ -38,6 +42,7 @@
 						<a class="collapse-item" th:href="@{/cidade/lista}">Cidade</a>
 						<a class="collapse-item" th:href="@{/livro/lista}">Livro</a>
 						<a class="collapse-item" th:href="@{/usuario/lista}">Usuario</a>
+						<a class="collapse-item" th:href="@{/pedido/lista}">Pedido</a>
 					</div>
 				</div>
 			</li>
@@ -55,7 +60,7 @@
 		</ul>
 		<ul class="nav nav-pills">
 			<li class="nav-item"><a class="nav-link " href="/"> <i
-					class="oi oi-account-logout"></i> <span>Home</span>
+					class="oi oi-account-logout"></i> <span>Sair</span>
 			</a></li>
 		</ul>
 	</nav>

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +19,23 @@ import br.edu.ifrn.livraria.model.Endereco;
 import br.edu.ifrn.livraria.model.Frete;
 import br.edu.ifrn.livraria.model.ItemPedido;
 import br.edu.ifrn.livraria.model.Livro;
+import br.edu.ifrn.livraria.model.Pedido;
+import br.edu.ifrn.livraria.model.Usuario;
 import br.edu.ifrn.livraria.service.FreteService;
 import br.edu.ifrn.livraria.service.ItemPedidoService;
 import br.edu.ifrn.livraria.service.LivroService;
+import br.edu.ifrn.livraria.service.SessionService;
+import br.edu.ifrn.livraria.service.UsuarioService;
 
 @Controller
 @RequestMapping("/itemPedido")
 public class ItemPedidoController {
+	
+	@Autowired
+	private SessionService<Usuario> serviceSession;
+	
+	@Autowired
+	private UsuarioService serviceUsuario;
 	
 	@Autowired
 	private ItemPedidoService service;
@@ -68,8 +79,6 @@ public class ItemPedidoController {
 			pesolivros += l.getPeso();
 			i++;
 		}
-		
-	//	String peso = Double.toString(pesolivros);
 		
 		RestTemplate template = new RestTemplate();
 		
@@ -118,10 +127,14 @@ public class ItemPedidoController {
 	}
 	
 	
-	@GetMapping("/listar")
+	@GetMapping("/lista")
 	public ModelAndView findAll() {
 		
-		ModelAndView mv = new ModelAndView("itemPedido/listar");
+		Usuario usuarioByEmail = serviceUsuario.getEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+		
+		serviceSession.criarSession("usuario", usuarioByEmail);
+		
+		ModelAndView mv = new ModelAndView("itemPedido/lista");
 		mv.addObject("itemPedidos", service.findAll());
 		
 		return mv;
@@ -135,6 +148,7 @@ public class ItemPedidoController {
 	
 	@GetMapping("/detalhes/{id}")
 	public ModelAndView detalhes(@PathVariable("id") Long id) {
+		
 		
 		ModelAndView mv = new ModelAndView("itemPedido/detalhes");
 		mv.addObject("itemPedido", service.findOne(id));

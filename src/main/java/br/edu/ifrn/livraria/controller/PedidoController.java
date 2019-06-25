@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -56,6 +57,9 @@ public class PedidoController {
 	
 	@Autowired
 	private SessionService<Usuario> serviceSession;
+	
+	@Autowired
+	private UsuarioService serviceUsuario;
 	
 	
 	@RequestMapping("/cadastrar")
@@ -112,7 +116,13 @@ public class PedidoController {
 	
 	@GetMapping("/lista")
 	private ModelAndView findAll() {
+		
+		Usuario usuarioByEmail = serviceUsuario.getEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+		
+		serviceSession.criarSession("usuario", usuarioByEmail);
+		
 		ModelAndView mv = new ModelAndView("pedido/lista");
+		mv.addObject("logado", serviceSession.getSession("usuario"));
         mv.addObject("pedido", pedidoService.listaAll());
         return mv;
 	}

@@ -53,18 +53,19 @@
 	                        <th>Data Pedido</th>
 	                        <th>Valor</th>
 	                        <th>Quantidade</th>
-	                        <th>Livro</th>
 	                        <th>Usuario</th>
+	                        <th>Usuario ID</th>
 	                    </tr>
 	                    </thead>
 	                    <tbody>
 		                    <tr th:each="p : ${pedido}">
 		                        <td th:text="${p.id}">2</td>
-		                        <td th:text="${p.dataPedido}">1995</td>
+		                        <td th:text="${p.dataCompra}">1995</td>
 		                        <td th:text="${p.valorTotal}">1.55...</td>
 		                        <td th:text="${p.quantidade}">2</td>
-		                       <!-- <td th:text="${p.usuario.nome}">2</td>
-		                         <td th:text="${p.livro.titulo}">23</td> -->
+		                        <td th:text="${p.usuario.nome}">2</td>
+		                        <td th:text="${p.usuario.id}">2</td>
+		                        
 		                        <td colspan="2">
 		                            <a class="btn btn-info btn-sm" th:href="@{/pedido/editar/{id} (id=${p.id}) }" role="button">
 		                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
