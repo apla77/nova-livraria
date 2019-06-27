@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import br.edu.ifrn.livraria.model.Livro;
 import br.edu.ifrn.livraria.model.Pedido;
 import br.edu.ifrn.livraria.model.Usuario;
 import br.edu.ifrn.livraria.repository.PedidoRepository;
@@ -34,6 +35,35 @@ public class PedidoService {
 	
 	public List<Pedido> findByUsuario(Usuario usuario) {
 		return repository.findByUsuario(usuario);
+	}
+
+	public List<Pedido> buscarPorData(String compra){
+		return repository.findByData(compra);
+	}
+	
+	public Double totalPorData(String compra){
+		Double valorTot = 0.0;
+		List<Pedido> pedido = repository.findByData(compra);
+		
+		for(Pedido p : pedido){
+			valorTot += p.getValorTotal();	
+		}
+		return valorTot;
+	}
+	
+	
+	public List<Pedido> buscarPorEmail(String compra){
+		return repository.findByEmail(compra);
+	}
+	
+	public Double totalPorEmail(String compra){
+		Double valorTot = 0.0;
+		List<Pedido> pedido = repository.findByEmail(compra);
+		
+		for(Pedido p : pedido){
+			valorTot += p.getValorTotal();	
+		}
+		return valorTot;
 	}
 
 }

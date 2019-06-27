@@ -174,7 +174,6 @@
 							var validacep = /^[0-9]{8}$/;
 							//Valida o formato do CEP.
 							if (validacep.test(cep)) {
-								//alert("Aguarde um Momento! Calculando o Frete");
 								$("#alert").show();
 								div.innerHTML = "<span> Aguarde um Momento! Calculando o Frete"+"</span>";
 								document.getElementById('preco').value = "****";

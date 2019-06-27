@@ -39,7 +39,10 @@ public class Pedido implements Serializable {
 	
 	private Date dataPedido;
 	
-	private String dataCompra;
+	private String compra;
+	
+	private String nomeusuario;
+	private String emailusuario;
 	
 	private StatusPedido statusPedido;
 
@@ -76,12 +79,12 @@ public class Pedido implements Serializable {
 		this.dataPedido = dataPedido;
 	}
 	
-	public String getDataCompra() {
-		return dataCompra;
+	public String getCompra() {
+		return compra;
 	}
 
-	public void setDataCompra(String dataCompra) {
-		this.dataCompra = dataCompra;
+	public void setCompra(String compra) {
+		this.compra = compra;
 	}
 
 	public StatusPedido getStatusPedido() {
@@ -106,6 +109,23 @@ public class Pedido implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+	
+
+	public String getNomeusuario() {
+		return nomeusuario;
+	}
+
+	public void setNomeusuario(String nomeusuario) {
+		this.nomeusuario = nomeusuario;
+	}
+
+	public String getEmailusuario() {
+		return emailusuario;
+	}
+
+	public void setEmailusuario(String emailusuario) {
+		this.emailusuario = emailusuario;
 	}
 
 	public static long getSerialversionuid() {

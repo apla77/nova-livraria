@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout}">
 <head><meta charset="UTF-8"/></head>
+<script th:src="@{/js/jquery.js}"></script>
+ <script type="text/javascript">
+ 
+ $(document).ready(function(){
+	 alert("OK");
+		$("#total").hide();
+ });
+ </script>
 <body>
 
 	    <section class="layout-content" layout:fragment="corpo">
@@ -12,7 +20,7 @@
 	                        <span>Lista de Pedidos</span>
 	                    </li>
 	                </ul>
-	                <a class="btn btn-primary btn-md" href="/pedidos/cadastrar" role="button">
+	                <a class="btn btn-primary btn-md" th:href="@{/itemPedido/cadastrar}" role="button">
 	                    <span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
 	                    <span>Fazer Pedido</span>
 	                </a>
@@ -23,25 +31,44 @@
 	
 	            <p>
 	                <i class="oi oi-magnifying-glass"></i><span></span>
+	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCompra"
+	                        aria-controls="collapseCompra">Data
+	                </button>
 	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseNome"
-	                        aria-controls="collapseNome">Pedido
+	                        aria-controls="collapseNome">E-mail
 	                </button>
 	            </p>
 	            <div class="row">
 	                <div class="col">
-	                    <div class="collapse" id="collapseNome">
+	                    <div class="collapse" id="collapseCompra">
 	
 	                        <nav class="navbar navbar-light bg-light">
-	                            <form class="form-inline" method="GET" th:action="@{/pedidos/buscar/nome}">
-	                                <input class="form-control mr-sm-2" type="search" placeholder="nome" aria-label="Search"
-	                                       th:name="nome" />
-	                                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
+	                            <form class="form-inline" method="GET" th:action="@{/pedido/buscar/compra}">
+	                                <input class="form-control mr-sm-2" type="text" placeholder="Data da compra" aria-label="Search"
+	                                       th:name="compra" />
+	                                <button class="btn btn-outline-success my-2 my-sm-0">Buscar</button>
 	                            </form>
 	                        </nav>
 	
 	                    </div>
 	                </div>
 	            </div>
+	            
+	           
+	            <div class="row">
+	                <div class="col">
+	                    <div class="collapse" id="collapseNome">
+	                        <nav class="navbar navbar-light bg-light">
+	                            <form class="form-inline" method="GET" th:action="@{/pedido/buscar2/emailusuario}">
+	                                <input class="form-control mr-sm-2" type="search" placeholder="E-mail Cliente" aria-label="Search"
+	                                       th:name="emailusuario" />
+	                                <button class="btn btn-outline-success my-2 my-sm-0">Buscar</button>
+	                            </form>
+	                        </nav>
+	                    </div>
+	                </div>
+	            </div>
+	            
 	            <div class="table-responsive">
 	            
 	            	<div th:replace="fragments/alert"></div>
@@ -51,36 +78,43 @@
 	                    <tr>
 	                        <th>Id</th>
 	                        <th>Data Pedido</th>
+	                        <th>Nome</th>
+	                        <th>E-mail</th>
 	                        <th>Valor</th>
 	                        <th>Quantidade</th>
-	                        <th>Usuario</th>
-	                        <th>Usuario ID</th>
+	                     	
+	                        
 	                    </tr>
 	                    </thead>
 	                    <tbody>
 		                    <tr th:each="p : ${pedido}">
 		                        <td th:text="${p.id}">2</td>
-		                        <td th:text="${p.dataCompra}">1995</td>
+		                        <td th:text="${p.compra}">1995</td>
+		                        <td th:text="${p.nomeusuario}">1995</td>
+		                         <td th:text="${p.emailusuario}">1995</td> 
 		                        <td th:text="${p.valorTotal}">1.55...</td>
 		                        <td th:text="${p.quantidade}">2</td>
-		                        <td th:text="${p.usuario.nome}">2</td>
-		                        <td th:text="${p.usuario.id}">2</td>
+		                  
 		                        
 		                        <td colspan="2">
-		                            <a class="btn btn-info btn-sm" th:href="@{/pedido/editar/{id} (id=${p.id}) }" role="button">
+		                            <a class="btn btn-info btn-sm" href="#" role="button">
 		                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 		                            </a>
-		                            <button th:id="${#strings.concat('btn_pedido/excluir/', p.id) }" type="button" class="btn btn-danger btn-sm"
+		                            <button id="#" type="button" class="btn btn-danger btn-sm"
 		                                    data-toggle="modal" data-target="#myModal">
 		                                <span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
 		                            </button>
 		                        </td>
-		                    </tr>    
+		                    </tr>   
+		                    
 	                    </tbody>
-	                </table>
+	                </table><br>
+	                <th:block th:if="${valorTot != null}">
+	                	<span id="total">Valor Total: </span><tr><td id="valorTotal" th:text="${valorTot}"></td></tr>
+	                </th:block>
+	                 
 	            </div>
 	        </div>
-	        
 	        <div th:replace="fragments/modal :: modal"></div>
 	        
 	    </section>

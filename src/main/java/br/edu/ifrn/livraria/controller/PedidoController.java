@@ -11,12 +11,14 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.ifrn.livraria.model.Frete;
@@ -47,9 +49,6 @@ public class PedidoController {
 	private FreteService freteService;
 	
 	@Autowired
-	private UsuarioService usuarioService;
-	
-	@Autowired
 	private LivroService livroService;
 	
 	@Autowired
@@ -58,14 +57,10 @@ public class PedidoController {
 	@Autowired
 	private SessionService<Usuario> serviceSession;
 	
-	@Autowired
-	private UsuarioService serviceUsuario;
-	
 	
 	@RequestMapping("/cadastrar")
 	public ModelAndView cadastrar(Pedido pedido) {
 		ModelAndView mv = new ModelAndView("pedido/cadastro");
-	//	mv.addObject("livros", livroService.listaAll());
 		mv.addObject("logado", serviceSession.getSession("usuario"));
 		mv.addObject("pedido", pedido);
 		return mv;
@@ -83,6 +78,8 @@ public class PedidoController {
 		System.out.println(" depois da função sendMail *****************************************");
 		
 		Pedido pedido = new Pedido();
+		pedido.setNomeusuario(usuario.getNome());
+		pedido.setEmailusuario(usuario.getEmail());
 		
 		pedidoService.cadastrar(pedido);
 		
@@ -96,7 +93,7 @@ public class PedidoController {
 		pedido.setValorTotal(itempedido.getValorTotal());
 		pedido.setDataPedido(new Date());
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-		pedido.setDataCompra(format.format(pedido.getDataPedido()));
+		pedido.setCompra(format.format(pedido.getDataPedido()));
 		pedido.setStatusPedido(StatusPedido.ANDAMENTO);
 		
 		
@@ -117,12 +114,8 @@ public class PedidoController {
 	@GetMapping("/lista")
 	private ModelAndView findAll() {
 		
-		Usuario usuarioByEmail = serviceUsuario.getEmail(SecurityContextHolder.getContext().getAuthentication().getName());
-		
-		serviceSession.criarSession("usuario", usuarioByEmail);
-		
 		ModelAndView mv = new ModelAndView("pedido/lista");
-		mv.addObject("logado", serviceSession.getSession("usuario"));
+		//mv.addObject("logado", serviceSession.getSession("usuario"));
         mv.addObject("pedido", pedidoService.listaAll());
         return mv;
 	}
@@ -156,5 +149,22 @@ public class PedidoController {
 	public List<Livro> listaDeLivros() {
 		return livroService.listaAll();
 	}	
+	
+	@GetMapping("/buscar/compra")
+	public ModelAndView getPorData(@RequestParam("compra") String compra, ModelMap model) {
+		model.addAttribute("pedido", pedidoService.buscarPorData(compra));
+		ModelAndView mv = new ModelAndView("/pedido/lista");
+		mv.addObject("pedido", pedidoService.buscarPorData(compra));
+		mv.addObject("valorTot", pedidoService.totalPorData(compra));
+		return mv;
+	}
+	
+	@GetMapping("/buscar2/emailusuario")
+	public ModelAndView getPorNome(@RequestParam("emailusuario") String emailusuario, ModelMap model) {
+		model.addAttribute("pedido", pedidoService.buscarPorEmail(emailusuario));
+		ModelAndView mv = new ModelAndView("/pedido/lista");
+		mv.addObject("pedido", pedidoService.buscarPorEmail(emailusuario));
+		return mv;
+	}
 
 }
