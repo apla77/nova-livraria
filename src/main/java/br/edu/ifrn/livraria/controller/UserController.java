@@ -60,15 +60,13 @@ public class UserController {
 			
 				view.addObject("error", "Email já está cadastrado no sistema!");
 		}else {
-			//Role role = new Role();
-			//role.setNome("CLIENTE");
-			//serviceRole.add(role);
 			usuario.getRole().add(role);
 			service.add(usuario);
 			Email email = new Email();
 			email.setTo(usuario.getEmail());
 			sendEmail.sendEmailBemVindo(email);
-			view.addObject("mensagem", "Usuário cadastrado com sucesso!");
+			view.addObject("mensagem", "Olá " + usuario.getNome() + " seu cadastrado foi realizado com sucesso, "
+					+ " uso seu E-mail e senha para logar em nosso site.");
 		}
 		return view;		
 	}
@@ -96,7 +94,7 @@ public class UserController {
 			Email email2 = new Email();
 			email2.setTo(usuario2.getEmail());
 			sendEmail.sendNovaSenhaEmail(email2, novaSenhaGerada);
-			view.addObject("mensagem", "Sua nova senha");
+			view.addObject("mensagem", "Nova senha gerada para " + usuario2.getEmail());
 		}
 		return view;		
 	}

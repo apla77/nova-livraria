@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.ifrn.livraria.model.Autor;
+import br.edu.ifrn.livraria.model.Usuario;
 import br.edu.ifrn.livraria.repository.AutorRepository;
 
 @Service
@@ -34,6 +35,8 @@ public class AutorService {
         repository.deleteById(id);
     }
 
-
+    public List<Autor> buscarPorNome(String nome){
+		return repository.findByName(nome);
+	}
 
 }

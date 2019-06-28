@@ -65,7 +65,7 @@ public class Usuario implements UserDetails {
 	@NotBlank(message = "Senha é uma informação obrigatória.")
 	private String senha; 
 		
-	@Column(nullable = false, length = 15)
+	@Column(nullable = false, length = 60)
 	@NotBlank(message = "Rua é uma informação obrigatória.")
 	private String rua;
 	

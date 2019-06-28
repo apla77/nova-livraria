@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import br.edu.ifrn.livraria.model.Livro;
+import br.edu.ifrn.livraria.model.Pedido;
 
 @Repository
 public interface LivroRepository extends JpaRepository<Livro, Long>{
@@ -18,4 +19,7 @@ public interface LivroRepository extends JpaRepository<Livro, Long>{
 			+ "where ip.pedido_id = ?1", nativeQuery = true)
 	
 	public List<Livro> findByPedido(Long id);
+	
+	@Query("select l from Livro l where l.titulo = ?1")
+	public List<Livro> findByTitulo(String titulo);
 }

@@ -115,7 +115,6 @@ public class PedidoController {
 	private ModelAndView findAll() {
 		
 		ModelAndView mv = new ModelAndView("pedido/lista");
-		//mv.addObject("logado", serviceSession.getSession("usuario"));
         mv.addObject("pedido", pedidoService.listaAll());
         return mv;
 	}
@@ -161,6 +160,18 @@ public class PedidoController {
 	
 	@GetMapping("/buscar2/emailusuario")
 	public ModelAndView getPorNome(@RequestParam("emailusuario") String emailusuario, ModelMap model) {
+		model.addAttribute("pedido", pedidoService.buscarPorEmail(emailusuario));
+		ModelAndView mv = new ModelAndView("/pedido/lista");
+		mv.addObject("pedido", pedidoService.buscarPorEmail(emailusuario));
+		return mv;
+	}
+	
+	@GetMapping("/listar2")
+	public ModelAndView getPorNome(ModelMap model) {
+		Usuario usuario = serviceSession.getSession("usuario");
+		
+		String emailusuario = usuario.getEmail();
+		
 		model.addAttribute("pedido", pedidoService.buscarPorEmail(emailusuario));
 		ModelAndView mv = new ModelAndView("/pedido/lista");
 		mv.addObject("pedido", pedidoService.buscarPorEmail(emailusuario));

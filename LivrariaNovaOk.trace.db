@@ -1,0 +1,6 @@
+2019-06-27 16:49:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column """RUA"" VARCHAR(15) NOT NULL": "STRINGDECODE('Francisco de Assis R\u1ebdgo') (23)"; SQL statement:
+insert into usuario (account_non_expired, account_non_locked, bairro, cep, cidade_id_fk, credentials_non_expired, data_criacao, data_update, email, enabled, municipio, nome, rua, senha, sobrenome, uf, ultimo_acesso, username, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [22001-199]
+2019-06-27 16:53:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column """RUA"" VARCHAR(15) NOT NULL": "STRINGDECODE('Francisco de Assis R\u1ebdgo') (23)"; SQL statement:
+insert into usuario (account_non_expired, account_non_locked, bairro, cep, cidade_id_fk, credentials_non_expired, data_criacao, data_update, email, enabled, municipio, nome, rua, senha, sobrenome, uf, ultimo_acesso, username, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [22001-199]

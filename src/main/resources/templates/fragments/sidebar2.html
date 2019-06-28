@@ -6,23 +6,26 @@
 				
 
 				<ul class="nav nav-pills">
-					<li class="nav-item"><span class="nav-link active" >Livraria Nova DSC</span></li>
+					
 					<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseComprar"
-				aria-expanded="false" aria-controls="collapseComprar"> <i
-					class="fas fa-fw fa-book"></i> <span>Pedido</span></a>
+				aria-expanded="false" aria-controls="collapseComprar"> 
+				<br><br>
+				<i	class="fas fa-fw fa-book"></i> <span>Pedido</span></a>
 
 				<div id="collapseComprar" class="collapse"
 					aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/itemPedido/cadastrar}">Comprar</a>
-						<a class="collapse-item" th:href="@{/pedido/buscar2/emailusuario}">Listar</a>
+						<a class="collapse-item" th:href="@{/itemPedido/cadastrar}">Comprar</a>	
+						<a class="collapse-item" th:href="@{/pedido/listar2}">Listar</a>
+						
+						
 					</div>
 				</div></li>
 				</ul>
 				<ul class="nav nav-pills">
 					<li class="nav-item"><a class="nav-link " href="/"> <i
-							class="oi oi-account-logout"></i> <span>Home</span>
+							class="oi oi-account-logout"></i> <span>Sair</span>
 					</a></li>
 				</ul>
 			</nav>

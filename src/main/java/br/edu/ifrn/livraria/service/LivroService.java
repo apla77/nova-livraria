@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.edu.ifrn.livraria.model.Categoria;
 import br.edu.ifrn.livraria.model.Livro;
+import br.edu.ifrn.livraria.model.Pedido;
 import br.edu.ifrn.livraria.repository.LivroRepository;
 
 @Service
@@ -33,6 +34,10 @@ public class LivroService {
 	
 	public List<Livro> findByPedido(Long id) {
 		return repository.findByPedido(id);
+	}
+	
+	public List<Livro> buscarPorTitulo(String titulo){
+		return repository.findByTitulo(titulo);
 	}
 
 }

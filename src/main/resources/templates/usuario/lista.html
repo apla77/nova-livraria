@@ -49,11 +49,11 @@
 	                    <thead>
 	                    <tr>
 	                        <th>Id</th>
-	                        <th>Usuário</th>
+	                        <th>Nome</th>
+	                        <th>Sobrenome</th>
 	                        <th>E-Mail</th>
 	                        <th>Rua</th>
 	                        <th>Bairro</th>
-	                        <th>Cidade</th>
 	                        <th>Ação</th>
 	                    </tr>
 	                    </thead>
@@ -61,10 +61,10 @@
 		                    <tr th:each="u : ${usuarios}">
 		                        <td th:text="${u.id}">2</td>
 		                        <td th:text="${u.nome}">Diego</td>
+		                        <td th:text="${u.sobrenome}">Diego</td>
 		                        <td th:text="${u.email}">uol.com.br...</td>
 		                        <td th:text="${u.rua}">do Amor</td>
 		                        <td th:text="${u.bairro}">23</td>
-		                   <!--      <td th:text="${u.cidade.nome}">PDF</td> -->
 		                        <td colspan="2">
 		                            <a class="btn btn-info btn-sm" th:href="@{/usuario/editar/{id} (id=${u.id}) }" role="button">
 		                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>

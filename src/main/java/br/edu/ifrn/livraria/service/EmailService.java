@@ -22,7 +22,7 @@ public class EmailService {
 			Usuario usuario = serviceUsuario.getEmail(email.getTo());
 			email.setFrom("gestaoescolaronline1.0@gmail.com");
 			email.getMap().put("name", usuario.getNome());
-			email.setSubject("Bem-vindo ao site Livraria!");
+			email.setSubject("Olá " + usuario.getNome() + ", seja bem-vindo ao site Livraria!");
 			
 			SimpleMailMessage message = new SimpleMailMessage();
 			message.setTo(email.getTo());
@@ -42,7 +42,7 @@ public class EmailService {
 			Usuario usuario = serviceUsuario.getEmail(email.getTo());
 			email.setFrom("gestaoescolaronline1.0@gmail.com");
 			email.getMap().put("name", usuario.getNome());
-			email.setSubject("Confira sua nova senha da Livraria!");
+			email.setSubject("Olá " + usuario.getNome() + " Confira sua nova senha da Livraria!");
 			
 			SimpleMailMessage message = new SimpleMailMessage();
 			message.setTo(email.getTo());
@@ -61,10 +61,10 @@ public class EmailService {
 		
 		SimpleMailMessage message = new SimpleMailMessage();
 		
-		System.out.println(email + " *****************************************");
+		Usuario usuario = serviceUsuario.getEmail(email);
 		
         message.setText(texto);
-        message.setSubject("Sua compra foi realizada com Sucesso! Livraria");
+        message.setSubject("Olá " + usuario.getNome() + " Sua compra foi realizada com Sucesso!");
         message.setTo(email);
         message.setFrom("gestaoescolaronline1.0@gmail.com");
         

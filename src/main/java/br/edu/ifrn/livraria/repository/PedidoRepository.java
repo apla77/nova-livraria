@@ -1,5 +1,6 @@
 package br.edu.ifrn.livraria.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,6 +21,5 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long>{
 	
 	@Query("select p from Pedido p where p.emailusuario = ?1")
 	public List<Pedido> findByEmail(String compra);
-
-	 
+	
 }
