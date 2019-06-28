@@ -2,13 +2,9 @@ package br.edu.ifrn.livraria.controller;
 
 import java.util.Random;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -65,8 +61,7 @@ public class UserController {
 			Email email = new Email();
 			email.setTo(usuario.getEmail());
 			sendEmail.sendEmailBemVindo(email);
-			view.addObject("mensagem", "Olá " + usuario.getNome() + " seu cadastrado foi realizado com sucesso, "
-					+ " uso seu E-mail e senha para logar em nosso site.");
+			view.addObject("mensagem", "Olá seu cadastrado foi realizado com sucesso em nosso site.");
 		}
 		return view;		
 	}
@@ -94,7 +89,7 @@ public class UserController {
 			Email email2 = new Email();
 			email2.setTo(usuario2.getEmail());
 			sendEmail.sendNovaSenhaEmail(email2, novaSenhaGerada);
-			view.addObject("mensagem", "Nova senha gerada para " + usuario2.getEmail());
+			view.addObject("mensagem", "Nova senha gerada!!!");
 		}
 		return view;		
 	}

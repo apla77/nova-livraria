@@ -1,8 +1,5 @@
 package br.edu.ifrn.livraria.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 public enum UF {
 
 	AC("AC", "Acre"), 

@@ -8,7 +8,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,7 +32,6 @@ import br.edu.ifrn.livraria.service.ItemPedidoService;
 import br.edu.ifrn.livraria.service.LivroService;
 import br.edu.ifrn.livraria.service.PedidoService;
 import br.edu.ifrn.livraria.service.SessionService;
-import br.edu.ifrn.livraria.service.UsuarioService;
 
 @Controller
 @RequestMapping("/pedido")

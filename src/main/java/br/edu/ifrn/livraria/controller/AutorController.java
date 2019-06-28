@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.ifrn.livraria.model.Autor;
-import br.edu.ifrn.livraria.model.Editora;
 import br.edu.ifrn.livraria.service.AutorService;
 
 @Controller

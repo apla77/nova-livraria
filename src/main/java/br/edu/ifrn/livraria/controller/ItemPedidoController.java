@@ -19,7 +19,6 @@ import br.edu.ifrn.livraria.model.Endereco;
 import br.edu.ifrn.livraria.model.Frete;
 import br.edu.ifrn.livraria.model.ItemPedido;
 import br.edu.ifrn.livraria.model.Livro;
-import br.edu.ifrn.livraria.model.Pedido;
 import br.edu.ifrn.livraria.model.Usuario;
 import br.edu.ifrn.livraria.service.FreteService;
 import br.edu.ifrn.livraria.service.ItemPedidoService;

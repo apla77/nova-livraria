@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import br.edu.ifrn.livraria.model.Livro;
-import br.edu.ifrn.livraria.model.Pedido;
 
 @Repository
 public interface LivroRepository extends JpaRepository<Livro, Long>{
