@@ -10,7 +10,7 @@ import br.edu.ifrn.livraria.model.Pedido;
 @Repository
 public interface FreteRepository extends JpaRepository<Frete, Long>{
 	
-	@Query("select f from Frete f where f.pedido = ?1")
+	@Query("select f from Frete f where f.pedido = ?")
 	public Frete findByPedido(Pedido pedido);
 
 }

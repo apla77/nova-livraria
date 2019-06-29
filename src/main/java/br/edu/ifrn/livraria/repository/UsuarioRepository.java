@@ -22,7 +22,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	@Query
 	Usuario findByUsername(String username);
 	
-	@Query("select u from Usuario u where u.nome = ?1")
+	@Query("select u from Usuario u where u.nome = ?")
 	public List<Usuario> findByName(String nome);
 
 }

@@ -13,7 +13,7 @@ public interface AutorRepository extends JpaRepository<Autor, Long>{
 	
 	public List<Autor> findByNomeLike(String name);
 	
-	@Query("select a from Autor a where a.nome = ?1")
+	@Query("select a from Autor a where a.nome = ?")
 	public List<Autor> findByName(String nome);
 
 }

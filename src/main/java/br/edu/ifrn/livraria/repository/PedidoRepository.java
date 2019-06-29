@@ -12,13 +12,13 @@ import br.edu.ifrn.livraria.model.Usuario;
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long>{
 
-	@Query("select p from Pedido p where p.usuario = ?1")
+	@Query("select p from Pedido p where p.usuario = ?")
 	public List<Pedido> findByUsuario(Usuario usuario);
 	
-	@Query("select p from Pedido p where p.compra = ?1")
+	@Query("select p from Pedido p where p.compra = ?")
 	public List<Pedido> findByData(String compra);
 	
-	@Query("select p from Pedido p where p.emailusuario = ?1")
+	@Query("select p from Pedido p where p.emailusuario = ?")
 	public List<Pedido> findByEmail(String compra);
 	
 }

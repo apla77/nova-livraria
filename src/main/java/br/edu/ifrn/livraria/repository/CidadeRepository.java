@@ -13,7 +13,7 @@ public interface CidadeRepository extends JpaRepository<Cidade, Long>{
 	
 	public List<Cidade> findByNomeLike(String name);
 	
-	@Query("select c from Categoria c where c.nome = ?1")
+	@Query("select c from Categoria c where c.nome = ?")
 	public List<Cidade> findByName(String nome);
 
 

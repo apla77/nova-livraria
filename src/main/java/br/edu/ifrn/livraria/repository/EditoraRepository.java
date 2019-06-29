@@ -13,7 +13,7 @@ public interface EditoraRepository extends JpaRepository<Editora, Long>{
 
 	public List<Editora> findByNomeLike(String name);
 	
-	@Query("select e from Editora e where e.nome = ?1")
+	@Query("select e from Editora e where e.nome = ?")
 	public List<Editora> findByName(String nome);
 
 }
