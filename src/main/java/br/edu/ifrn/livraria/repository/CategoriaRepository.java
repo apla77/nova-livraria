@@ -13,7 +13,7 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
 	
 public List<Categoria> findByNomeLike(String name);
 	
-	@Query("select c from Categoria c where c.nome = ?")
+	@Query("select c from Categoria c where c.nome = ?1")
 	public List<Categoria> findByName(String nome);
 
 }

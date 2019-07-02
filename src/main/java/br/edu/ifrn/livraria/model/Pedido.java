@@ -35,7 +35,7 @@ public class Pedido implements Serializable {
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
 	
-	private Date dataPedido;
+	private Date datapedido;
 	
 	private String compra;
 	
@@ -68,15 +68,16 @@ public class Pedido implements Serializable {
 		this.livros = livros;
 	}
 	
-
-	public Date getDataPedido() {
-		return dataPedido;
-	}
-
-	public void setDataPedido(Date dataPedido) {
-		this.dataPedido = dataPedido;
-	}
 	
+	
+	public Date getDatapedido() {
+		return datapedido;
+	}
+
+	public void setDatapedido(Date datapedido) {
+		this.datapedido = datapedido;
+	}
+
 	public String getCompra() {
 		return compra;
 	}

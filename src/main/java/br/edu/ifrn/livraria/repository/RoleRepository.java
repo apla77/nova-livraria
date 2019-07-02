@@ -9,6 +9,6 @@ import br.edu.ifrn.livraria.model.Role;
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long>{
 
-	@Query("select r from Role r where r.nome = ?")
-public Role findByNome(String nome);
+	@Query("select r from Role r where r.nome = ?1")
+	public Role findByNome(String nome);
 }

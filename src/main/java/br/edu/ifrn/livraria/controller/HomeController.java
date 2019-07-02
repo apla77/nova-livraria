@@ -32,6 +32,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String index() {
 		System.out.println("TELA LOGIN");
+		serviceSession.clearSession();
 		return "login";
 	}
 	

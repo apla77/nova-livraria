@@ -21,7 +21,7 @@ import br.edu.ifrn.livraria.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService implements UserDetailsService{
-	
+	 
 	@Autowired
 	private UsuarioRepository repository;
 	@Autowired
@@ -83,6 +83,10 @@ public class UsuarioService implements UserDetailsService{
 	
 	public List<Usuario> buscarPorNome(String nome){
 		return repository.findByName(nome);
+	}
+
+	public List<Usuario> buscarPorEmail(String email){
+		return repository.findEmail(email);
 	}
 	
 }

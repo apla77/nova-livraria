@@ -78,5 +78,11 @@ public class UsuarioController {
 		model.addAttribute("usuarios", service.buscarPorNome(nome));
 		return "/usuario/lista";
 	}
+	
+	@GetMapping("/buscar2/email")
+	public String getPorEmail(@RequestParam("email") String email, ModelMap model) {
+		model.addAttribute("usuarios", service.buscarPorEmail(email));
+		return "/usuario/lista";
+	}
 
 }

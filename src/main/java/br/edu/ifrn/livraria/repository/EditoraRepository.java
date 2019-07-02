@@ -11,9 +11,10 @@ import br.edu.ifrn.livraria.model.Editora;
 @Repository
 public interface EditoraRepository extends JpaRepository<Editora, Long>{
 
+	@Query
 	public List<Editora> findByNomeLike(String name);
 	
-	@Query("select e from Editora e where e.nome = ?")
+	@Query("select e from Editora e where e.nome = ?1")
 	public List<Editora> findByName(String nome);
 
 }

@@ -34,7 +34,11 @@
 	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCompra"
 	                        aria-controls="collapseCompra">Data
 	                </button>      
-	                <i class="oi oi-magnifying-glass"></i><span></span>
+	                <i class="oi oi-magnifying-glass"></i><span></span> 
+	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseData"
+		                        aria-controls="collapseData">Datas
+		            </button>
+		            <i class="oi oi-magnifying-glass"></i><span></span>
 	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseNome"
 	                        aria-controls="collapseNome">E-mail
 	                </button>
@@ -54,7 +58,22 @@
 	                    </div>
 	                </div>
 	            </div>
-	            
+	            <div class="row">
+	                <div class="col">
+	                    <div class="collapse" id="collapseData">
+	                        <nav class="navbar navbar-light bg-light">
+	                            <form class="form-inline" method="POST" th:action="@{/pedido/buscarDatas}">
+	                                <input class="form-control mr-sm-2" type="text" aria-label="Search"
+	                                       th:name='dataInicial' />
+	                                <input class="form-control mr-sm-2" type="text" aria-label="Search"
+	                                       th:name='dataFinal' />
+	                                <button class="btn btn-outline-success my-2 my-sm-0">Buscar</button>
+	                            </form>
+	                        </nav>
+	
+	                    </div>
+	                </div>
+	            </div>
 	           
 	            <div class="row">
 	                <div class="col">
@@ -78,7 +97,7 @@
 	                <table class="table table-striped table-hover table-sm">
 	                    <thead>
 	                    <tr>
-	                        <th>Id</th>
+	                        <th>Código</th>
 	                        <th>Data Pedido</th>
 	                        <th>Nome</th>
 	                        <th>E-mail</th>
@@ -100,7 +119,7 @@
 		                        
 		                        <td colspan="2">
 		                            <a class="btn btn-info btn-sm" href="#" role="button">
-		                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
+		                                <span class="oi oi-brush" title="Detalhes" aria-hidden="true"></span>
 		                            </a>
 		                            <button id="#" type="button" class="btn btn-danger btn-sm"
 		                                    data-toggle="modal" data-target="#myModal">

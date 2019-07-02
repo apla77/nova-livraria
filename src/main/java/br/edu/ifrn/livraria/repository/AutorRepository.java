@@ -11,9 +11,10 @@ import br.edu.ifrn.livraria.model.Autor;
 @Repository
 public interface AutorRepository extends JpaRepository<Autor, Long>{
 	
+	@Query
 	public List<Autor> findByNomeLike(String name);
 	
-	@Query("select a from Autor a where a.nome = ?")
+	@Query("select a from Autor a where a.nome = ?1")
 	public List<Autor> findByName(String nome);
 
 }

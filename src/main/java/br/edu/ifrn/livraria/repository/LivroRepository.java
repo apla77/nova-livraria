@@ -19,6 +19,6 @@ public interface LivroRepository extends JpaRepository<Livro, Long>{
 	
 	public List<Livro> findByPedido(Long id);
 	
-	@Query("select l from Livro l where l.titulo = ?")
+	@Query("select l from Livro l where l.titulo = ?1")
 	public List<Livro> findByTitulo(String titulo);
 }

@@ -25,6 +25,10 @@
 	                <i class="oi oi-magnifying-glass"></i><span></span>
 	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseNome"
 	                        aria-controls="collapseNome">Nome</button>
+	                        
+	                <i class="oi oi-magnifying-glass"></i><span></span>
+	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseEmail"
+	                        aria-controls="collapseEmail">Email</button>
 	            </p>
 	            <div class="row">
 	                <div class="col">
@@ -34,6 +38,21 @@
 	                            <form class="form-inline" method="GET" th:action="@{/usuario/buscar/nome}">
 	                                <input class="form-control mr-sm-2" type="search" placeholder="nome" aria-label="Search"
 	                                       th:name="nome" />
+	                                <button class="btn btn-outline-success my-2 my-sm-0">Procurar</button>
+	                            </form>
+	                        </nav>
+	
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="row">
+	                <div class="col">
+	                    <div class="collapse" id="collapseEmail">
+	
+	                        <nav class="navbar navbar-light bg-light">
+	                            <form class="form-inline" method="GET" th:action="@{/usuario/buscar2/email}">
+	                                <input class="form-control mr-sm-2" type="search" placeholder="email" aria-label="Search"
+	                                       th:name="email" />
 	                                <button class="btn btn-outline-success my-2 my-sm-0">Procurar</button>
 	                            </form>
 	                        </nav>

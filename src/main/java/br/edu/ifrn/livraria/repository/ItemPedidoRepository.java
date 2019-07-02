@@ -12,6 +12,6 @@ import br.edu.ifrn.livraria.model.Pedido;
 @Repository
 public interface ItemPedidoRepository extends JpaRepository<ItemPedido, Long> { 
 	
-	@Query("select it_p from ItemPedido it_p where it_p.pedido = ?")
+	@Query("select it_p from ItemPedido it_p where it_p.pedido = ?1")
 	public List<ItemPedido> findByListPedido(List<Pedido> pedidos);
 }

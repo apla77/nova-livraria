@@ -1,5 +1,7 @@
 package br.edu.ifrn.livraria.service;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +51,6 @@ public class PedidoService {
 		return valorTot;
 	}
 	
-	
 	public List<Pedido> buscarPorEmail(String compra){
 		return repository.findByEmail(compra);
 	}
@@ -63,5 +64,8 @@ public class PedidoService {
 		}
 		return valorTot;
 	}
-
+	
+	public List<Pedido> buscarPorDatas (Date dtinicial, Date dtfinal){
+		return repository.findByDatas(dtinicial, dtfinal);
+	}
 }

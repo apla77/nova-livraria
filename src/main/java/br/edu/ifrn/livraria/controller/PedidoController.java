@@ -1,5 +1,6 @@
 package br.edu.ifrn.livraria.controller;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.sun.xml.messaging.saaj.packaging.mime.internet.ParseException;
 
 import br.edu.ifrn.livraria.model.Frete;
 import br.edu.ifrn.livraria.model.ItemPedido;
@@ -89,11 +92,13 @@ public class PedidoController {
 		Frete frete = itempedido.getFrete();
 		
 		pedido.setValorTotal(itempedido.getValorTotal());
-		pedido.setDataPedido(new Date());
+		pedido.setDatapedido(new Date());
+		pedido.setQuantidade(itempedido.getQuantidade());
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-		pedido.setCompra(format.format(pedido.getDataPedido()));
+		pedido.setCompra(format.format(pedido.getDatapedido()));
 		pedido.setStatusPedido(StatusPedido.ANDAMENTO);
 		
+		System.out.println("Data criada: " + pedido.getDatapedido());
 		
 		pedido.setUsuario(usuario);
 		
@@ -173,6 +178,24 @@ public class PedidoController {
 		model.addAttribute("pedido", pedidoService.buscarPorEmail(emailusuario));
 		ModelAndView mv = new ModelAndView("/pedido/lista");
 		mv.addObject("pedido", pedidoService.buscarPorEmail(emailusuario));
+		return mv;
+	}
+	
+	@PostMapping("/buscarDatas")
+    public ModelAndView getPorDatas(@RequestParam("dataInicial") String dataInicial,
+    		                       @RequestParam("dataFinal") String dataFinal,
+    		                       ModelMap model) throws java.text.ParseException{
+		
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");	
+		Date dtinicial = null,dtfinal = null;
+		
+		dtinicial = new Date( formatter.parse(dataInicial).getTime());
+		dtfinal = new Date( formatter.parse(dataFinal).getTime());
+		
+		model.addAttribute("pedido", pedidoService.buscarPorDatas(dtinicial, dtfinal));
+		ModelAndView mv = new ModelAndView("/pedido/lista");
+    
+		mv.addObject("pedido", pedidoService.buscarPorDatas(dtinicial, dtfinal));
 		return mv;
 	}
 
