@@ -131,9 +131,13 @@
 	                    </tbody>
 	                </table><br>
 	                <th:block th:if="${valorTot != null}">
-	                	<span id="total">Valor Total: </span><tr><td id="valorTotal" th:text="${valorTot}"></td></tr>
+	                	<span>Valor Total: </span><tr><td th:text="${valorTot}"></td></tr>
 	                </th:block>
-	                 
+	                 <th:block th:if="${error != null}">
+	                 	<div class="alert alert-danger">
+	                 		<span th:text="${error}">Valor Total: </span>
+	                 	</div>
+	                 </th:block>
 	            </div>
 	        </div>
 	        <div th:replace="fragments/modal :: modal"></div>

@@ -65,7 +65,8 @@ public class PedidoService {
 		return valorTot;
 	}
 	
-	public List<Pedido> buscarPorDatas (Date dtinicial, Date dtfinal){
-		return repository.findByDatas(dtinicial, dtfinal);
+	public List<Pedido> buscarPorDatas (int dtinicial, int dtfinal){
+		return repository.findByDataPedido(dtinicial, dtfinal);
+		
 	}
 }

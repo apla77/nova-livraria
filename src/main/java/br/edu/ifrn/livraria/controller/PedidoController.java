@@ -97,8 +97,7 @@ public class PedidoController {
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 		pedido.setCompra(format.format(pedido.getDatapedido()));
 		pedido.setStatusPedido(StatusPedido.ANDAMENTO);
-		
-		System.out.println("Data criada: " + pedido.getDatapedido());
+	
 		
 		pedido.setUsuario(usuario);
 		
@@ -184,18 +183,21 @@ public class PedidoController {
 	@PostMapping("/buscarDatas")
     public ModelAndView getPorDatas(@RequestParam("dataInicial") String dataInicial,
     		                       @RequestParam("dataFinal") String dataFinal,
-    		                       ModelMap model) throws java.text.ParseException{
+    		                       ModelMap model) throws java.text.ParseException, ParseException{
+
+		ModelAndView mv = new ModelAndView("/pedido/lista");
 		
 		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");	
 		Date dtinicial = null,dtfinal = null;
 		
 		dtinicial = new Date( formatter.parse(dataInicial).getTime());
 		dtfinal = new Date( formatter.parse(dataFinal).getTime());
-		
-		model.addAttribute("pedido", pedidoService.buscarPorDatas(dtinicial, dtfinal));
-		ModelAndView mv = new ModelAndView("/pedido/lista");
-    
-		mv.addObject("pedido", pedidoService.buscarPorDatas(dtinicial, dtfinal));
+		List<Pedido> lista = pedidoService.buscarPorDatas((dtinicial.getMonth()+1), (dtfinal.getMonth()+1));
+		if(!lista.isEmpty()) {
+			mv.addObject("pedido", lista);
+		}else {
+			mv.addObject("error", "Não Encontrado!");
+		}
 		return mv;
 	}
 

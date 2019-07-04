@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import br.edu.ifrn.livraria.model.Pedido;
 import br.edu.ifrn.livraria.model.Usuario; 
-
+ 
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long>{
 
@@ -19,10 +19,10 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long>{
 	@Query("select p from Pedido p where p.compra = ?1")
 	public List<Pedido> findByData(String compra);
 	
-	@Query("select p from Pedido p where p.emailusuario = ?1")
+	@Query("select p from Pedido p where p.emailusuario = ?1") 
 	public List<Pedido> findByEmail(String compra);
 	
-	@Query("select p from Pedido p where p.datapedido BETWEEN ?1 AND ?2")
-	public List<Pedido> findByDatas(Date dtinicial, Date dtfinal);
+	@Query(value="select * from pedido p where month(p.data_pedido) >= ? and month(p.data_pedido) <= ?", nativeQuery = true)
+	public List<Pedido> findByDataPedido(int dtinicial, int dtfinal);
 	
 }
