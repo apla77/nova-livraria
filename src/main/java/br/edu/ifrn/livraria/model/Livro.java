@@ -61,6 +61,8 @@ public class Livro implements Serializable{
 	
 	private String largura;
 	
+	private boolean promocao;
+	
 	@ManyToOne
 	@JoinColumn(name = "editora_id_fk")
 	public Editora editora;
@@ -80,6 +82,13 @@ public class Livro implements Serializable{
 	@ManyToMany(mappedBy="livro")
 	public List<ItemPedido> itemPedido;
 
+	public boolean isPromocao() {
+		return promocao;
+	}
+
+	public void setPromocao(boolean promocao) {
+		this.promocao = promocao;
+	}
 
 	public Long getId() {
 		return id;

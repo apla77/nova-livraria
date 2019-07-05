@@ -21,4 +21,7 @@ public interface LivroRepository extends JpaRepository<Livro, Long>{
 	
 	@Query("select l from Livro l where l.titulo = ?1")
 	public List<Livro> findByTitulo(String titulo);
+	
+	@Query("select l from Livro l where l.promocao = ?1")
+	public List<Livro> findAllPro(boolean procura);
 }

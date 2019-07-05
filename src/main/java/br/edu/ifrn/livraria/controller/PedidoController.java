@@ -174,9 +174,13 @@ public class PedidoController {
 		
 		String emailusuario = usuario.getEmail();
 		
-		model.addAttribute("pedido", pedidoService.buscarPorEmail(emailusuario));
 		ModelAndView mv = new ModelAndView("/pedido/lista");
-		mv.addObject("pedido", pedidoService.buscarPorEmail(emailusuario));
+		List<Pedido> lista2 = pedidoService.buscarPorEmail(emailusuario);
+		if(!lista2.isEmpty()) {
+			mv.addObject("pedido", lista2);
+		}else {
+			mv.addObject("error", "Não exitem pedidos para o e-mail informada!");
+		}
 		return mv;
 	}
 	
@@ -196,7 +200,7 @@ public class PedidoController {
 		if(!lista.isEmpty()) {
 			mv.addObject("pedido", lista);
 		}else {
-			mv.addObject("error", "Não Encontrado!");
+			mv.addObject("error", "Não exitem pedidos para data informada!");
 		}
 		return mv;
 	}

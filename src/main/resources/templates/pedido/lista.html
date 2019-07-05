@@ -49,8 +49,8 @@
 	
 	                        <nav class="navbar navbar-light bg-light">
 	                            <form class="form-inline" method="GET" th:action="@{/pedido/buscar/compra}">
-	                                <input class="form-control mr-sm-2" type="text" placeholder="Data da compra" aria-label="Search"
-	                                       th:name='compra' />
+	                                <input class="form-control mr-sm-2" placeholder="Ex.: dd/mm/aaaa" data-mask="00/00/0000"
+	                                type="text" aria-label="Search" th:name='compra' />
 	                                <button class="btn btn-outline-success my-2 my-sm-0">Buscar</button>
 	                            </form>
 	                        </nav>
@@ -63,10 +63,10 @@
 	                    <div class="collapse" id="collapseData">
 	                        <nav class="navbar navbar-light bg-light">
 	                            <form class="form-inline" method="POST" th:action="@{/pedido/buscarDatas}">
-	                                <input class="form-control mr-sm-2" type="text" aria-label="Search"
-	                                       th:name='dataInicial' />
-	                                <input class="form-control mr-sm-2" type="text" aria-label="Search"
-	                                       th:name='dataFinal' />
+	                                <input class="form-control mr-sm-2" placeholder="Ex.: dd/mm/aaaa" data-mask="00/00/0000"
+	                                	type="text" aria-label="Search" th:name='dataInicial' />
+	                                <input class="form-control mr-sm-2" placeholder="Ex.: dd/mm/aaaa" data-mask="00/00/0000"
+	                                	type="text" aria-label="Search" th:name='dataFinal' />
 	                                <button class="btn btn-outline-success my-2 my-sm-0">Buscar</button>
 	                            </form>
 	                        </nav>

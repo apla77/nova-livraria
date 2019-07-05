@@ -21,6 +21,10 @@ public class LivroService {
 	public List<Livro> listaAll() {
 		return repository.findAll();
 	}
+	 
+	public List<Livro> buscarPromocao(boolean promocao) {
+		return repository.findAllPro(promocao);
+	}
 	
 	public Livro findOne(Long id) {
 		return repository.getOne(id);

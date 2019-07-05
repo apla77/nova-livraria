@@ -100,5 +100,14 @@ public class LivroController {
 		mv.addObject("livro", service.buscarPorTitulo(titulo));
 		return mv;
 	}
-
+	
+	
+	
+	@GetMapping("/procurar/promocao")
+	public ModelAndView getPromocao(@RequestParam("promocao") boolean promocao, ModelMap model) {
+		model.addAttribute("livro", service.buscarPromocao(promocao));
+		ModelAndView mv = new ModelAndView("/livro/lista");
+		mv.addObject("livro", service.buscarPromocao(promocao));
+		return mv;
+	}
 }
