@@ -69,7 +69,7 @@
 	                                	type="text" aria-label="Search" th:name='dataFinal' />
 	                                <button class="btn btn-outline-success my-2 my-sm-0">Buscar</button>
 	                            </form>
-	                        </nav>
+	                        </nav> 
 	
 	                    </div>
 	                </div>
@@ -115,12 +115,13 @@
 		                         <td th:text="${p.emailusuario}">1995</td> 
 		                        <td th:text="${p.valorTotal}">1.55...</td>
 		                        <td th:text="${p.quantidade}">2</td>
-		                  
-		                        
-		                        <td colspan="2">
-		                            <a class="btn btn-info btn-sm" href="#" role="button">
+		                  			
+		                        <td th:each="itemPedido : ${p.itemPedido}">
+		                        	<a class="btn btn-info btn-sm" th:href="@{/pedido/addPedido/{id}(id=${itemPedido.id})}" role="button">
 		                                <span class="oi oi-brush" title="Detalhes" aria-hidden="true"></span>
 		                            </a>
+		                        </td>
+		                        <td colspan="2">
 		                            <button id="#" type="button" class="btn btn-danger btn-sm"
 		                                    data-toggle="modal" data-target="#myModal">
 		                                <span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>

@@ -1,6 +1,7 @@
 package br.edu.ifrn.livraria.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +25,8 @@ public class Pedido implements Serializable {
 	@Column(nullable = false)
 	private int quantidade = 1;
 	
+	@OneToMany(mappedBy = "pedido")
+	private List<ItemPedido> itemPedido = new ArrayList<ItemPedido>();
 	
 	@OneToMany(mappedBy = "pedido")
 	private List<Livro> livros;
@@ -125,6 +128,15 @@ public class Pedido implements Serializable {
 
 	public void setEmailusuario(String emailusuario) {
 		this.emailusuario = emailusuario;
+	}
+	
+
+	public List<ItemPedido> getItemPedido() {
+		return itemPedido;
+	}
+
+	public void setItemPedido(List<ItemPedido> itemPedido) {
+		this.itemPedido = itemPedido;
 	}
 
 	public static long getSerialversionuid() {

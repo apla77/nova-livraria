@@ -3,6 +3,7 @@ package br.edu.ifrn.livraria.controller;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -74,9 +75,9 @@ public class PedidoController {
 		
 		Usuario usuario = serviceSession.getSession("usuario");
 		
-		System.out.println(" Chama função sendMail *********************** " + usuario.getEmail());
-		emailService.sendMail("Livraria Nova - Compra Realizada", usuario.getEmail());
-		System.out.println(" depois da função sendMail *****************************************");
+		//System.out.println(" Chama função sendMail *********************** " + usuario.getEmail());
+		//emailService.sendMail("Livraria Nova - Compra Realizada", usuario.getEmail());
+		//System.out.println(" depois da função sendMail *****************************************");
 		
 		Pedido pedido = new Pedido();
 		pedido.setNomeusuario(usuario.getNome());
@@ -102,6 +103,12 @@ public class PedidoController {
 		pedido.setUsuario(usuario);
 		
 		pedidoService.cadastrar(pedido);
+		
+		System.out.println(" Chama função sendMail *********************** " + usuario.getEmail());
+		emailService.sendMail("Livraria Nova - Compra Realizada \nData da compra:" + pedido.getCompra()
+							+ "\nNúmero pedido: " + pedido.getId() + "\nUsuário: " + pedido.getNomeusuario()
+							+ "\nItens: " + itempedido.toString(), usuario.getEmail());
+		System.out.println(" depois da função sendMail *****************************************");
 		
 		frete.setPedido(pedido);
 		freteService.save(frete);

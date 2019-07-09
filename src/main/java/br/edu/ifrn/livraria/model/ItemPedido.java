@@ -115,9 +115,16 @@ public class ItemPedido implements Serializable{
 	public void setPrazo(String prazo) {
 		this.prazo = prazo;
 	}
-
+ 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	@Override
+	public String toString() {
+		return "Quantidade: " + quantidade + "\nValorTotal: " + valorTotal + "\nCEP: " + cep
+				+ "\nFrete: " + preco + "\nPrazo: " + prazo + "\nLivros" + livro.toString();
+	}
+	
 
 }

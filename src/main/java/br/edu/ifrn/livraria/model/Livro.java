@@ -230,5 +230,10 @@ public class Livro implements Serializable{
 		return serialVersionUID;
 	}
 
+	@Override
+	public String toString() {
+		return "\nTitulo: " + titulo;
+	}
+	
 	
 }
